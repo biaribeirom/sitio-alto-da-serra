@@ -1,5 +1,6 @@
 package br.edu.ibmec.projeto_verduras_legumes.services;
 
+import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +18,30 @@ public class ResourceService {
 		resourceRepository.save(resource);
 	}
 
-	public Optional<Resource> findByID(Integer id) {
-		return resourceRepository.findByID(id);
+	public Resource findByID(Integer id) {
+		Optional<Resource> resource = resourceRepository.findByID(id);
+
+		if (resource.isPresent()) {
+
+			return resource.get();
+		}
+
+		throw new ResourceNotFoundException();
+	}
+
+	// public String[] getProducts() {
+	// return resourceRepository
+	// .findAll()
+	// .stream()
+	// .map(resource -> getImage(resource))
+	// .toArray(String[]::new);
+	// }
+}
+
+class ResourceNotFoundException extends RuntimeException {
+	private static final long serialVersionUID = 1L;
+
+	public ResourceNotFoundException() {
+		super("Resource not found");
 	}
 }

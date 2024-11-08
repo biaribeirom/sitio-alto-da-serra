@@ -1,5 +1,7 @@
 package br.edu.ibmec.projeto_verduras_legumes.models;
 
+import java.util.Base64;
+
 import org.springframework.web.multipart.MultipartFile;
 
 import jakarta.persistence.Basic;
@@ -11,9 +13,9 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 enum ResourceType {
-	IMAGE, // 1
-	DESCRIPTION, // 2
-	BOTH, // 3
+	IMAGE, // 0
+	DESCRIPTION, // 1
+	BOTH, // 2
 }
 
 @Entity
@@ -22,7 +24,7 @@ public class Resource {
 	@Id
 	@Basic(optional = false)
 	@Column(name = "ID")
-	@GeneratedValue(strategy = GenerationType.AUTO)
+	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	public Integer ID;
 
 	@Column(name = "IMAGE", nullable = true, length = 268435456)
@@ -56,6 +58,28 @@ public class Resource {
 
 	public void setType(ResourceType type) {
 		this.type = type;
+	}
+
+	public String getBase64Image() {
+		return Base64.getEncoder().encodeToString(image);
+	}
+
+	public String testimonialPart1() {
+		// gets everything in the text part before "-"
+		if (description.indexOf("-") == -1) {
+			return description;
+		}
+
+		return description.substring(0, description.indexOf("-"));
+	}
+
+	public String testimonialPart2() {
+		// gets everything in the text part after "-"
+		if (description.indexOf("-") == -1) {
+			return "";
+		}
+
+		return description.substring(description.indexOf("-") + 1);
 	}
 
 }

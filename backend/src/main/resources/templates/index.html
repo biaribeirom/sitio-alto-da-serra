@@ -1,308 +1,351 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title th:text="${title}">Hotelaria Ibmec</title>
-        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-        <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
-        <style>
-            body {
-                background-color: #f8f8f8;
-            }
-            .container {
-                margin-top: 20px;
-            }
-            .main-img {
-                width: 100%;
-                height: auto;
-            }
-            .description {
-                padding: 20px 0;
-            }
-            footer {
-                background-color: #333;
-                color: white;
-                text-align: center;
-                padding: 10px;
-                margin-top: 20px;
-            }
-            .section-divider {
-                border: 0;
-                height: 0.5px;
-                background: #999;
-                background-image: linear-gradient(to right, #ccc, #333, #ccc);
-                margin: 40px 0;
-            }
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 
-            /* Estilo customizado para reduzir a altura do carrossel */
-            .carousel-item img {
-                height: 400px;
-                object-fit: cover;
-            }
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sitio Alto da Serra</title>
 
-            .page-title {
-                text-align: center;
-                margin-top: 20px;
-                margin-bottom: 20px;
-            }
-            .wine-red {
-                color: #cc0000;
-            }
-            .gray {
-                color: #737373;
-            }
-            .fancy-font {
-                font-family: 'Dancing Script', cursive;
-            }
-            .font-size {
-                font-size: 1.5em;
-            }
-        </style>
-        <link href="https://fonts.googleapis.com/css2?family=CustomFont:wght@400;700&display=swap" rel="stylesheet">
-    </head>
-    <body>
+     <!-- conectando cdn font awesoma -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Linking Swiper JS -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Linking Google Fonts Icon -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
+    <!-- Linking Arquivo CSS -->
+    <link rel="stylesheet" href="styles/index.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <!--! banner is only image -->
+    <div class="bannernav" th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'">
         <header>
-            <nav class="navbar navbar-expand-lg navbar-light bg-light">
-                <a class="navbar-brand" href="#">hotelaria-Ibmec</a>
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarNav">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item active">
-                            <a class="nav-link" href="/hotelaria-ibmec/principal">Home <span class="sr-only">(current)</span></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/hotelaria-ibmec/acomodacoes">Acomodações</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="lazerDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Áreas de Lazer
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="lazerDropdown">
-                                <a class="dropdown-item" href="/hotelaria-ibmec/lazer/externa">Externa</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/hotelaria-ibmec/lazer/interna">Interna</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/hotelaria-ibmec/bares">Bares</a>
-                        </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="businessDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Business
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="businessDropdown">
-                                <a class="dropdown-item" href="/hotelaria-ibmec/business-recepcao">Recepção e Lojas</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/hotelaria-ibmec/business-salas-reuniao">Salas de Reuniões</a>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="/hotelaria-ibmec/business-teatros">Foyer e Teatros</a>
-                            </div>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/hotelaria-ibmec/fitness">Fitness</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/hotelaria-ibmec/restaurante">Restaurante</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="/hotelaria-ibmec/spa">Spa e Relaxamento</a>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0">
-                        <input class="form-control mr-sm-2" type="text" placeholder="Usuário" aria-label="Usuário">
-                        <input class="form-control mr-sm-2" type="password" placeholder="Senha" aria-label="Senha">
-                        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Enviar</button>
-                    </form>
+            <div class="navbar">
+                <div class="logo"><a class="a" href="#">Sitio Alto da Serra</a></div>
+                <ul class="links">
+                    <li class="li"><a class="a" href="hero">Home</a></li>
+                    <li class="li"><a class="a" href="about">Quem Somos</a></li>
+                    <li class="li"><a class="a" href="geleias">Geleias</a></li>
+                    <li class="li"><a class="a" href="contato">Contato</a></li>
+                </ul>
+                <a href="#" class="action_btn a">Get Started</a>
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
                 </div>
-            </nav>
+            </div>
+
+
+            <div class="dropdown_menu">
+                <li class="li"><a class="a" href="hero">Home</a></li>
+                    <li class="li"><a class="a" href="about">Quem Somos</a></li>
+                    <li class="li"><a class="a" href="geleias">Geleias</a></li>
+                    <li class="li"><a class="a" href="contato">Contato</a></li>
+                    <li class="li"> <a href="#" class="action_btn a">Get Started</a></li>
+            </div>
         </header>
+    </div>
+
+    <!-- Catálogo -->
+
+    <section>
+        <div class="nossas-geleias">
+            <div class="container">
+                <div class="section-title">
+                    <h1 class="h1-carrosel">Produtos Oferecidos</h1>
+                    <p class="p-carrosel">Explore nossas Geleias Artesanais feitas com Ingredientes Selecionados</p>
+                </div>
+                <div class="div-carrousel">
+                    <div class="container swiper">
+                        <div class="card-wrapper">
+                            <ul class="card-list swiper-wrapper">
+
+                                <!-- SUBSTITUIR COM TH:EACH -->
+
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia Cambuci e Manga 100%
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
 
 
-        <div class="container mt-4">
-            <div id="carouselIndicators" class="carousel slide" data-ride="carousel">
-                <ol class="carousel-indicators">
-                    <li data-target="#carouselIndicators" data-slide-to="0" class="active"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="1"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="2"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="3"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="4"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="5"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="6"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="7"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="8"></li>
-                    <li data-target="#carouselIndicators" data-slide-to="9"></li>
-                </ol>
-                <div class="carousel-inner">
-                    <div class="carousel-item active">
-                        <img src="/images/hotel/hotel001.png" class="d-block w-100" alt="Recepção do Hotel">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/acomodacoes/acomodacoes003.png" class="d-block w-100" alt="Quarto Luxo">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/lazer/externa/externa001.png" class="d-block w-100" alt="Piscina Éden - Área Externa">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/restaurante/restaurante001.png" class="d-block w-100" alt="Restaurante Lumière 4">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/hotel/hotel003.png" class="d-block w-100" alt="Fachada do Hotel">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/salas/sala-reunioes001.png" class="d-block w-100" alt="Sala de Reunião Principal">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/teatros/teatro004.png" class="d-block w-100" alt="Teatro Clássico">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/bares/bar001.png" class="d-block w-100" alt="Sky Bar">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/spa/spa001.png" class="d-block w-100" alt="Spa e Relaxamento">
-                    </div>
-                    <div class="carousel-item">
-                        <img src="/images/fitness/fitness001.png" class="d-block w-100" alt="Academia">
-                    </div>
-                </div>
-                <a class="carousel-control-prev" href="#carouselIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-                <a class="carousel-control-next" href="#carouselIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </div>
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia Amora Preta
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
 
-        <br>
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia de Jabuticaba
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
 
-        <div class="container">
-            <div class="row mt-4">
-                <div class="col-md-4">
-                    <h3 class="wine-red fancy-font text-center">Hóspedes</h3>
-                    <p class="text-justify">Nosso hotel oferece uma experiência inesquecível para nossos hóspedes, com acomodações confortáveis e serviços personalizados. Desfrute de um atendimento exclusivo e de uma estadia repleta de comodidades, garantindo o máximo conforto e satisfação durante sua visita.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="wine-red fancy-font text-center">Acomodações</h3>
-                    <p class="text-justify">Nossas acomodações foram projetadas para oferecer o máximo de conforto e luxo. Cada quarto é equipado com modernas instalações, decoração elegante e vistas deslumbrantes. Relaxe e aproveite as facilidades exclusivas que garantem uma estadia perfeita.</p>
-                </div>
-                <div class="col-md-4">
-                    <h3 class="wine-red fancy-font text-center">Bar e Restaurante</h3>
-                    <p class="text-justify">Descubra uma experiência gastronômica única em nosso bar e restaurante. Oferecemos uma seleção de pratos deliciosos preparados com ingredientes frescos e uma carta de bebidas sofisticada. Seja para um jantar formal ou um coquetel casual, nosso ambiente acolhedor é ideal para todas as ocasiões.</p>
-                </div>
-            </div>
-            <hr class="section-divider">
-        </div>
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia de Morango
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
 
-        <div class="container">
-            <div class="page-title">
-                <h1 class="wine-red fancy-font">Atrações Turísticas</h1>
-                <hr class="section-divider">
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica001.png" class="img-fluid" alt="Palácio Luxuoso">
-                    <p class="text-justify">Explore o esplendor arquitetônico de um palácio luxuoso, com detalhes intrincados e jardins exuberantes, perfeito para uma visita cultural e histórica.</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica002.png" class="img-fluid" alt="Vinhedo Sofisticado">
-                    <p class="text-justify">Desfrute de uma experiência única em um vinhedo sofisticado, com paisagens deslumbrantes, degustação de vinhos de alta qualidade e um ambiente sereno.</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica003.png" class="img-fluid" alt="Marina de Iates de Luxo">
-                    <p class="text-justify">Visite uma marina de iates de luxo, onde você pode admirar iates modernos e desfrutar de lojas e restaurantes de alto padrão à beira-mar.</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica004.png" class="img-fluid" alt="Teatro Grandioso">
-                    <p class="text-justify">Assista a espetáculos magníficos em um teatro grandioso, com interior ornamentado, lustres imponentes e uma atmosfera de elegância e cultura.</p>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica005.png" class="img-fluid" alt="Museu de Arte Moderna">
-                    <p class="text-justify">Explore a criatividade e a inovação no Museu de Arte Moderna, com exposições interativas, arquitetura contemporânea e uma variedade de obras de arte fascinantes.</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica006.png" class="img-fluid" alt="Rua com Inúmeros Restaurantes">
-                    <p class="text-justify">Descubra a diversidade culinária em uma rua repleta de restaurantes, oferecendo uma ampla variedade de sabores e uma experiência gastronômica vibrante.</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica007.png" class="img-fluid" alt="Estádio de Futebol">
-                    <p class="text-justify">Explore a energia e a emoção de um estádio de futebol de classe mundial, com infraestrutura moderna e eventos esportivos de alto nível.</p>
-                </div>
-                <div class="col-md-3">
-                    <img src="/images/turisticas/turistica008.png" class="img-fluid" alt="Fonte Grandiosa">
-                    <p class="text-justify">Maravilhe-se com a beleza de uma fonte grandiosa, situada em um parque paisagístico, perfeita para um passeio relaxante e fotos memoráveis.</p>
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/jpeg;base64,'+ ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia de Uva e Manga
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
+
+                            </ul>
+
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-slide-button swiper-button-prev"></div>
+                            <div class="swiper-slide-button swiper-button-next"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
+    </section>
 
 
-        <hr class="section-divider"> 
+    <!-- Seção Informativa Sobre Nós -->
 
-        <!-- Footer -->
-        <footer class="bg-light text-center text-lg-start">
-            <div class="container p-4">
-                <div class="row">
-                    <!-- Informações de Contato -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase gray">Contato</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="#!" class="text-dark">Endereço: Ibmec - Campus Faria Lima, R. Sumidouro, 89 - Pinheiros, São Paulo - SP, 05428-070</a></li>
-                            <li><a href="#!" class="text-dark">Telefone: 0800 771 8020</a></li>
-                            <li><a href="mailto:contato@ibmec.edu.br" class="text-dark">Email: contato@ibmec.edu.br</a></li>
-                        </ul>
-                    </div>
+    <section class="sobre-nos">
+        <div class="container-sobre-nos">
+            <div class="about-content">
+                <h1>Sobre Sitío Alto da Serra</h1>
+                <p th:text="${about.getDescription()}">Ops... houve um erro ao carregar o texto.</p>
+                <button class="btn-sobre-nos">Veja Mais</button>
+            </div>
 
-                    <!-- Links Úteis -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase gray">Links Úteis</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="#!" class="text-dark">Home</a></li>
-                            <li><a href="#!" class="text-dark">Sobre</a></li>
-                            <li><a href="#!" class="text-dark">Serviços</a></li>
-                            <li><a href="#!" class="text-dark">Contato</a></li>
-                        </ul>
-                    </div>
+            <div class="about-image">
+                <img class="about-image" th:src="'data:image/png;base64,' + ${about.getBase64Image()}" alt="">
+            </div>
+        </div>
+    </section>
 
-                    <!-- Newsletter -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase gray">Newsletter</h5>
-                        <form action="#">
-                            <div class="form-outline form-white mb-4">
-                                <input type="email" id="form5Example2" class="form-control" />
-                                <label class="form-label" for="form5Example2">Seu Email</label>
-                            </div>
-                            <button type="submit" class="btn btn-dark btn-block mb-4">Inscreva-se</button>
-                        </form>
-                    </div>
 
-                    <!-- Redes Sociais -->
-                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
-                        <h5 class="text-uppercase gray">Siga-nos</h5>
-                        <ul class="list-unstyled mb-0">
-                            <li><a href="https://www.instagram.com/ibmec/" class="text-dark" target="_blank">Instagram</a></li>
-                            <li><a href="https://facebook.com/Ibmec" class="text-dark" target="_blank">Facebook</a></li>
-                            <li><a href="https://www.linkedin.com/school/ibmec/?originalSubdomain=br" class="text-dark" target="_blank">LinkedIn</a></li>
-                            <li><a href="https://www.youtube.com/Ibmec" class="text-dark" target="_blank">YouTube</a></li>
-                            <li><a href="https://twitter.com/ibmec_oficial?lang=en" class="text-dark" target="_blank">Twitter</a></li>
-                            <li><a href="https://www.tiktok.com/@ibmec.oficial" class="text-dark" target="_blank">TikTok</a></li>
-                        </ul>
+    <!-- PROCESSOS -->
+
+    <section>
+        <div class="nossas-geleias">
+            <div class="container">
+                <div class="section-title">
+                    <h1 class="h1-carrosel">Do Pomar à Mesa</h1>
+                    <p class="p-carrosel">Conheça o Processo Artesanal da Geleia Sítio Alto da Serra</p>
+                </div>
+                <div class="div-carrousel">
+                    <div class="container swiper">
+                        <div class="card-wrapper">
+                            <ul class="card-list swiper-wrapper">
+
+                                <!-- todo 3 BOTH resources (text & image) -->
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <div class="processos-text">
+                                            <p class="card-text" th:text="${dummy_product_1.getDescription()}">
+                                                Ops... houve um erro ao carregar o texto.
+                                            </p>
+                                        </div>
+
+                                    </a>
+                                </li>
+
+
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_2.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <p class="card-text" th:text="${dummy_product_2.getDescription()}">
+                                            Ops... houve um erro ao carregar o texto.
+                                        </p>
+
+                                    </a>
+                                </li>
+
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_3.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <p class="card-text" th:text="${dummy_product_3.getDescription()}">
+                                            Ops... houve um erro ao carregar o texto.
+                                        </p>
+
+                                    </a>
+                                </li>
+
+
+                            </ul>
+
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-slide-button swiper-button-prev"></div>
+                            <div class="swiper-slide-button swiper-button-next"></div>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
-                © 2024 Copyright<br/>
-                <a class="text-dark" href="https://ibmec.edu.br/">ibmec.edu.br</a>
-            </div>
-        </footer>
+        </div>
+    </section>
 
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
+
+    <!-- TESTIMONIALS -->
+
+    <section class="section-testimonial">
+        <div class="section__container">
+            <!-- todo insert 3 resources (text and image) here -->
+            <div class="header">
+              <h1>Depoimentos</h1>
+              <p>Veja o que nossos clientes estão dizendo!</p>
+            </div>
+            <div class="testimonials__grid">
+              <div class="card">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p th:text="${testimonial_1.testimonialPart1()}">
+                    Ops... houve um erro ao carregar o texto.
+                </p>
+                <hr />
+                <img th:src="'data:image/png;base64,' + ${testimonial_1.getBase64Image()}" />
+                <p class="name" th:text="${testimonial_1.testimonialPart2()}">
+                    Ops... houve um erro ao carregar o texto.
+                </p>
+              </div>
+              <div class="card">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p th:text="${testimonial_2.testimonialPart1()}">
+                    Ops... houve um erro ao carregar o texto.
+                </p>
+                <hr />
+                <img th:src="'data:image/png;base64,' + ${testimonial_2.getBase64Image()}" />
+                <p class="name" th:text="${testimonial_2.testimonialPart2()}">
+                    Ops... houve um erro ao carregar o texto.
+                </p>
+              </div>
+              <div class="card">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p th:text="${testimonial_3.testimonialPart1()}">
+                    Ops... houve um erro ao carregar o texto.
+                </p>
+                <hr />
+                <img th:src="'data:image/png;base64,' + ${testimonial_3.getBase64Image()}" />
+                <p class="name" th:text="${testimonial_3.testimonialPart2()}">
+                    Ops... houve um erro ao carregar o texto.
+                </p>
+              </div>
+            </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="section-testimonial">
+        <div class="section__container">
+            <div class="header">
+              <h1>Saboreie Nossas Novidades</h1>
+              <p>Mantenha-se atualizado com as últimas delícias e promoções do Sítio Alto da Serra</p>
+            </div>
+            <form class="container-newsletter">
+                <input type="email" placeholder="Email">
+                <button class="newsletter-btn">Inscreva-se</button>
+            </form>
+
+    </section>
+
+
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container-footer">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>company</h4>
+                    <ul>
+                        <li><a href="#">about us</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <!-- todo 3 resources (text only) here -->
+                        <li><a href="#" th:text="'Email: ' + ${email.description}">Email: erro ao carregar o texto</a></li>
+                        <li><a href="#">Phone: <br th:text="${phone.description}"></a></li>
+                        <li><a href="#">Endereço: <br th:text="${address.description}"></a></li>
+
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>follow us</h4>
+                    <div class="social-links">
+                        <!-- todo 3 resources (text only) here (redirect links) -->
+                        <a th:href="${facebook.description}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                        <a th:href="${instagram.description}" target="_blank"><i class="fab fa-instagram"></i></a>
+                        <a th:href="${whatsapp.description}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+
+
+
+
+
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/scripts/index.js"></script>
+    <!-- scipt tooglebutton -->
+     <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+            ? "fa-solid fa-xmark"
+            : "fa-solid fa-bars"
+        }
+     </script>
+
+</body>
+
 </html>

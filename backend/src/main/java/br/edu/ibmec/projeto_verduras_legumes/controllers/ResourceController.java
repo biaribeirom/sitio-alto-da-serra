@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.util.Base64;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +31,7 @@ public class ResourceController {
 	// }
 
 	@GetMapping("/{id}")
-	public @ResponseBody Optional<Resource> interface_register(@PathVariable("id") Integer id) {
+	public @ResponseBody Resource interface_register(@PathVariable("id") Integer id) {
 		return resourceService.findByID(id);
 	}
 
