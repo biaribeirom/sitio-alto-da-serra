@@ -1,4 +1,7 @@
 HELP.md
+data/
+.mov.db
+.db
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
