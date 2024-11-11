@@ -26,7 +26,7 @@
 
     <!--! banner is only image -->
     <div class="bannernav" th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'">
-        <header>
+        <header style="background-color: #18492c;">
             <div class="navbar">
                 <div class="logo"><a class="a" href="#">Sitio Alto da Serra</a></div>
                 <ul class="links">
@@ -35,7 +35,7 @@
                     <li class="li"><a class="a" href="geleias">Geleias</a></li>
                     <li class="li"><a class="a" href="contato">Contato</a></li>
                 </ul>
-                <a href="#" class="action_btn a">Get Started</a>
+                <a href="/login" class="action_btn a">Login Administrativo</a>
                 <div class="toggle_btn">
                     <i class="fa-solid fa-bars"></i>
                 </div>
@@ -47,7 +47,7 @@
                     <li class="li"><a class="a" href="about">Quem Somos</a></li>
                     <li class="li"><a class="a" href="geleias">Geleias</a></li>
                     <li class="li"><a class="a" href="contato">Contato</a></li>
-                    <li class="li"> <a href="#" class="action_btn a">Get Started</a></li>
+                    <li class="li"> <a href="/login" class="action_btn a">Login Administrativo</a></li>
             </div>
         </header>
     </div>
@@ -289,12 +289,11 @@
         <div class="container-footer">
             <div class="row">
                 <div class="footer-col">
-                    <h4>company</h4>
+                    <h4>Companhia</h4>
                     <ul>
-                        <li><a href="#">about us</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
+                        <li><a href="#">Sobre Nós</a></li>
+                        <li><a href="#">Nossos Serviços</a></li>
+                        <li><a href="#">Newsletter</a></li>
                     </ul>
                 </div>
 
@@ -302,14 +301,14 @@
                     <h4>Contato</h4>
                     <ul>
                         <!-- todo 3 resources (text only) here -->
-                        <li><a href="#" th:text="'Email: ' + ${email.description}">Email: erro ao carregar o texto</a></li>
+                        <li><a href="#">Email: <br th:text="${email.description}"></a></li>
                         <li><a href="#">Phone: <br th:text="${phone.description}"></a></li>
                         <li><a href="#">Endereço: <br th:text="${address.description}"></a></li>
 
                     </ul>
                 </div>
                 <div class="footer-col">
-                    <h4>follow us</h4>
+                    <h4>Nossas Redes Sociais</h4>
                     <div class="social-links">
                         <!-- todo 3 resources (text only) here (redirect links) -->
                         <a th:href="${facebook.description}" target="_blank"><i class="fab fa-facebook-f"></i></a>

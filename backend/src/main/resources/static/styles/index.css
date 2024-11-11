@@ -197,7 +197,14 @@ p {
 }
 
 .a:hover {
-	color: #64732f;
+	color: #fff;
+	scale: 1.05;
+	transition: 0.3s;
+	transform: ease-in-out;
+}
+
+.a:active {
+	scale: 0.95;
 }
 
 /* HEADER NAVBAR */
@@ -222,7 +229,8 @@ header {
 	display: flex;
 	align-items: center;
 	justify-content: space-between;
-	padding-top: 24px;
+	padding-top: 10px;
+	padding-bottom: 10px;
 }
 
 .navbar .logo a {
@@ -244,20 +252,20 @@ header {
 }
 
 .action_btn {
-	background-color: #18492c;
-	color: #fff;
+	background-color: #fff;
+	color: #000;
 	padding: 0.5rem 1rem;
 	border: none;
 	outline: none;
 	border-radius: 20px;
-	font-size: 0.8rem;
-	font-weight: bold;
+	font-size: 1.1rem;
+	font-weight: 600;
 	cursor: pointer;
 }
 
 .action_btn:hover {
-	scale: 1.05;
-	color: #fff;
+	scale: 1.01;
+	color: #000;
 	transition: 0.3s;
 	transform: ease-in-out;
 }
@@ -497,7 +505,7 @@ ul {
 .footer-col h4 {
 	font-size: 18px;
 	color: #ffffff;
-	text-transform: capitalize;
+	/* text-transform: capitalize; */
 	margin-bottom: 35px;
 	font-weight: 500;
 	position: relative;
@@ -517,7 +525,7 @@ ul {
 }
 .footer-col ul li a {
 	font-size: 16px;
-	text-transform: capitalize;
+	/* text-transform: capitalize; */
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;

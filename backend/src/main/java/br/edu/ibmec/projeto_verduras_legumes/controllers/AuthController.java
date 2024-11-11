@@ -17,10 +17,12 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 
-	// @PostMapping({ "/login" })
-	// public String login(@RequestBody UserModel userModel) {
-	// return "login";
-	// }
+	@GetMapping({ "/login" })
+	public String login(Model model) {
+		model.addAttribute("user", new User());
+
+		return "login";
+	}
 
 	@GetMapping("/register")
 	public String interface_register(Model model) {
