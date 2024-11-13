@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Admin - Catálogo de Produtos</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="../static/style/animate.css">
+    <link rel="stylesheet" href="../static/style/ionicons.min.css">
+    <link rel="stylesheet" href="../static/style/style.css">
+    <link rel="stylesheet" href="../static/style/admin.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+  </head>
+  <body>
+    <!-- NAVBAR -->
+    <div class="bannernav">
+        <header>
+            <div class="navbar">
+                <div class="logo"><a class="a" href="#">Sítio Alto da Serra</a></div>
+                <ul class="links">
+                    <li class="li"><a class="a" href="hero">Home</a></li>
+                    <li class="li"><a class="a" href="about">Quem Somos</a></li>
+                    <li class="li"><a class="a" href="geleias">Catálogo</a></li>
+                    <li class="li"><a class="a" href="contato">Contato</a></li>
+                    <li class="li"><a class="a" href="newsletter">NewsLetter</a></li>
+
+                </ul>
+                <a href="#" class="action_btn a">Get Started</a>
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+    
+            <div class="dropdown_menu">
+                <li class="li"><a class="a" href="hero">Home</a></li>
+                <li class="li"><a class="a" href="about">Quem Somos</a></li>
+                <li class="li"><a class="a" href="geleias">Catálogo</a></li>
+                <li class="li"><a class="a" href="contato">Contato</a></li>
+                <li class="li"><a class="a" href="newsletter">NewsLetter</a></li>
+
+                <li class="li"> <a href="#" class="action_btn a">Get Started</a></li>
+            </div>
+        </header>
+    </div>
+
+    <section class="ftco-section">
+        <div class="container">
+            <div class="section-title">
+                <h1 class="h1-carrosel">Administração do Catálogo de Produtos</h1>
+                <p class="p-carrosel">Edite, remova ou adicione novos produtos ao catálogo</p>
+            </div>
+
+            <!-- TABELA DE PRODUTOS -->
+            <table class="product-table">
+                <thead>
+                    <tr>
+                        <th>Imagem</th>
+                        <th>Nome do Produto</th>
+                        <th>Descrição</th>
+                        <th>Preço</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><img src="../static/images/Geleia_Amora_Preta.png" alt="Geleia Amora Preta" class="table-img"></td>
+                        <td>Geleia Amora Preta</td>
+                        <td>Geleia artesanal feita com amoras frescas.</td>
+                        <td>R$ 15,00</td>
+                        <td>
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-outofstock">Fora de Estoque</button>
+                            <button class="btn-delete">Remover</button>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td><img src="../static/images/Geleia_Cambuci_Manga.png" alt="Geleia Cambuci com Manga" class="table-img"></td>
+                        <td>Geleia Cambuci com Manga</td>
+                        <td>Uma deliciosa combinação de cambuci e manga.</td>
+                        <td>R$ 18,00</td>
+                        <td>
+                            <button class="btn-edit">Editar</button>
+                            <button class="btn-outofstock">Fora de Estoque</button>
+                            <button class="btn-delete">Remover</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <!-- FORMULARIO DE ADICIONAR PRODUTO -->
+            <div class="add-product-form">
+                <h3>Adicionar Novo Produto</h3>
+                <form>
+                    <div class="form-group">
+                        <label for="product-name">Nome do Produto:</label>
+                        <input type="text" id="product-name" name="product-name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-description">Descrição:</label>
+                        <textarea id="product-description" name="product-description" rows="4" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-price">Preço:</label>
+                        <input type="number" id="product-price" name="product-price" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="product-image">Imagem do Produto:</label>
+                        <input type="file" id="product-image" name="product-image" required>
+                    </div>
+                    <button type="submit" class="btn-add">Adicionar Produto</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        document.querySelectorAll('.btn-delete').forEach(button => {
+            button.addEventListener('click', function() {
+                if(confirm('Tem certeza que deseja remover este produto?')) {
+                    // Ação de remoção do produto
+                    alert('Produto removido com sucesso.');
+                }
+            });
+        });
+
+        document.querySelectorAll('.btn-outofstock').forEach(button => {
+            button.addEventListener('click', function() {
+                // Ação para marcar produto como fora de estoque
+                alert('Produto marcado como fora de estoque.');
+            });
+        });
+
+        document.querySelectorAll('.btn-edit').forEach(button => {
+            button.addEventListener('click', function() {
+                // Ação para editar o produto
+                alert('Produto editado com sucesso.');
+            });
+        });
+    </script>
+   
+    <script src="../static/scripts/jquery.min.js"></script>
+    <script src="../static/scripts/jquery-migrate-3.0.1.min.js"></script>
+    <script src="../static/scripts/jquery.waypoints.min.js"></script>
+    <script src="../static/scripts/jquery.stellar.min.js"></script>
+    <script src="../static/scripts/owl.carousel.min.js"></script>
+    <script src="../static/scripts/aos.js"></script>
+    <script src="../static/scripts/scrollax.min.js"></script>
+    <script src="../static/scripts/main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="static/scripts/script.js"></script>
+    <script>
+        const toggleBtn = document.querySelector('.toggle_btn');
+        const toggleBtnIcon = document.querySelector('.toggle_btn i');
+        const dropDownMenu = document.querySelector('.dropdown_menu');
+   
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open');
+            const isOpen = dropDownMenu.classList.contains('open');
+   
+            toggleBtnIcon.classList = isOpen
+                ? "fa-solid fa-xmark"
+                : "fa-solid fa-bars";
+        }
+    </script>
+  </body>
+</html>
