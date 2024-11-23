@@ -61,8 +61,8 @@ public class Product {
 		this.name = name;
 	}
 
-	public Double getPrice() {
-		return price;
+	public String getPrice() {
+		return "R$" + price;
 	}
 
 	public void setPrice(Double price) {

@@ -26,6 +26,8 @@ import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 public class ProductController {
 	@Autowired
 	private ProductService productService;
+	@Autowired
+	private ResourceService resourceService;
 
 	// @PostMapping({ "/login" })
 	// public String login(@RequestBody UserModel userModel) {
@@ -33,8 +35,28 @@ public class ProductController {
 	// }
 
 	@GetMapping("/{id}")
-	public @ResponseBody Product interface_register(@PathVariable("id") Integer id) {
-		return productService.findByID(id);
+	public String interface_register(@PathVariable("id") Integer id, Model model) {
+		Resource banner = resourceService.findByID(1);
+		model.addAttribute("banner", banner);
+
+		Product product = productService.findByID(id);
+		model.addAttribute("product", product);
+
+		Resource email = resourceService.findByID(9);
+		model.addAttribute("email", email);
+		Resource phone = resourceService.findByID(10);
+		model.addAttribute("phone", phone);
+		Resource address = resourceService.findByID(11);
+		model.addAttribute("address", address);
+
+		Resource facebook = resourceService.findByID(12);
+		model.addAttribute("facebook", facebook);
+		Resource instagram = resourceService.findByID(13);
+		model.addAttribute("instagram", instagram);
+		Resource whatsapp = resourceService.findByID(14);
+		model.addAttribute("whatsapp", whatsapp);
+
+		return "/product";
 	}
 
 	@PostMapping("/create")
