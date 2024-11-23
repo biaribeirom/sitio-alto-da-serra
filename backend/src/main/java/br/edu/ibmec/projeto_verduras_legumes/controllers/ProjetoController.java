@@ -8,7 +8,9 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.edu.ibmec.projeto_verduras_legumes.models.Product;
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
+import br.edu.ibmec.projeto_verduras_legumes.services.ProductService;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 
 @Controller
@@ -16,6 +18,9 @@ import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 public class ProjetoController {
 	@Autowired
 	ResourceService resourceService;
+
+	@Autowired
+	ProductService productService;
 
 	@GetMapping({ "", "/", "/index", "/index.html", "/home" })
 	public String index(Model model) {
@@ -102,5 +107,32 @@ public class ProjetoController {
 		model.addAttribute("whatsapp", whatsapp);
 
 		return "/sobrenos";
+	}
+
+	@GetMapping("/produtos")
+	public String catalogo(Model model) {
+		// different banner
+		Resource banner = resourceService.findByID(24);
+		model.addAttribute("banner", banner);
+
+		// todo implement product loading logic here
+		Product[] products = productService.getProducts();
+		model.addAttribute("products", products);
+
+		Resource email = resourceService.findByID(9);
+		model.addAttribute("email", email);
+		Resource phone = resourceService.findByID(10);
+		model.addAttribute("phone", phone);
+		Resource address = resourceService.findByID(11);
+		model.addAttribute("address", address);
+
+		Resource facebook = resourceService.findByID(12);
+		model.addAttribute("facebook", facebook);
+		Resource instagram = resourceService.findByID(13);
+		model.addAttribute("instagram", instagram);
+		Resource whatsapp = resourceService.findByID(14);
+		model.addAttribute("whatsapp", whatsapp);
+
+		return "/catalogo";
 	}
 }

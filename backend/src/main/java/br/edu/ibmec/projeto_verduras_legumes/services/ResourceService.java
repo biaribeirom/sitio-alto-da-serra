@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.repository.ResourceRepository;
+import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceNotFoundException;
 
 @Service
 public class ResourceService {
@@ -36,12 +37,4 @@ public class ResourceService {
 	// .map(resource -> getImage(resource))
 	// .toArray(String[]::new);
 	// }
-}
-
-class ResourceNotFoundException extends RuntimeException {
-	private static final long serialVersionUID = 1L;
-
-	public ResourceNotFoundException() {
-		super("Resource not found");
-	}
 }
