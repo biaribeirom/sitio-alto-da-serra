@@ -58,4 +58,49 @@ public class ProjetoController {
 
 		return "/index";
 	}
+
+	@GetMapping("/sobre-nos")
+	public String sobrenos(Model model) {
+		Resource banner = resourceService.findByID(1);
+		model.addAttribute("banner", banner);
+
+		// Resource about = resourceService.findByID(2);
+		// model.addAttribute("about", about);
+		Resource about_us = resourceService.findByID(15);
+		model.addAttribute("about_us", about_us);
+
+		Resource who_are_we_image_1 = resourceService.findByID(16);
+		model.addAttribute("who_are_we_image_1", who_are_we_image_1);
+		Resource who_are_we_image_2 = resourceService.findByID(17);
+		model.addAttribute("who_are_we_image_2", who_are_we_image_2);
+		Resource who_are_we_text = resourceService.findByID(18);
+		model.addAttribute("who_are_we_text", who_are_we_text);
+
+		Resource objective_text = resourceService.findByID(19);
+		model.addAttribute("objective_text", objective_text);
+		Resource objective_1 = resourceService.findByID(20);
+		model.addAttribute("objective_1", objective_1);
+		Resource objective_2 = resourceService.findByID(21);
+		model.addAttribute("objective_2", objective_2);
+		Resource objective_3 = resourceService.findByID(22);
+		model.addAttribute("objective_3", objective_3);
+		Resource objective_4 = resourceService.findByID(23);
+		model.addAttribute("objective_4", objective_4);
+
+		Resource email = resourceService.findByID(9);
+		model.addAttribute("email", email);
+		Resource phone = resourceService.findByID(10);
+		model.addAttribute("phone", phone);
+		Resource address = resourceService.findByID(11);
+		model.addAttribute("address", address);
+
+		Resource facebook = resourceService.findByID(12);
+		model.addAttribute("facebook", facebook);
+		Resource instagram = resourceService.findByID(13);
+		model.addAttribute("instagram", instagram);
+		Resource whatsapp = resourceService.findByID(14);
+		model.addAttribute("whatsapp", whatsapp);
+
+		return "/sobrenos";
+	}
 }

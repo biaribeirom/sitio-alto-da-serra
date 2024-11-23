@@ -26,16 +26,16 @@
 
     <!--! banner is only image -->
     <div class="bannernav" th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'">
-        <header style="background-color: #18492c;">
+        <header>
             <div class="navbar">
-                <div class="logo"><a class="a" href="#">Sitio Alto da Serra</a></div>
+                <div class="logo"><a class="a" href='/home'>Sítio Alto da Serra</a></div>
                 <ul class="links">
-                    <li class="li"><a class="a" href="hero">Home</a></li>
-                    <li class="li"><a class="a" href="about">Quem Somos</a></li>
-                    <li class="li"><a class="a" href="geleias">Geleias</a></li>
-                    <li class="li"><a class="a" href="contato">Contato</a></li>
+                    <li class="li"><a class="a" href='/home'>Home</a></li>
+                    <li class="li"><a class="a" href="/sobre-nos">Sobre Nós</a></li>
+                    <li class="li"><a class="a" href="/produtos">Geleias</a></li>
+                    <li class="li"><a class="a" href="#" id="contato-btn">Contato</a></li>
                 </ul>
-                <a href="/auth/login" class="action_btn a">Login Administrativo</a>
+
                 <div class="toggle_btn">
                     <i class="fa-solid fa-bars"></i>
                 </div>
@@ -43,11 +43,11 @@
 
 
             <div class="dropdown_menu">
-                <li class="li"><a class="a" href="hero">Home</a></li>
-                    <li class="li"><a class="a" href="about">Quem Somos</a></li>
-                    <li class="li"><a class="a" href="geleias">Geleias</a></li>
-                    <li class="li"><a class="a" href="contato">Contato</a></li>
-                    <li class="li"> <a href="/login" class="action_btn a">Login Administrativo</a></li>
+                <li class="li"><a class="a" href="/home">Home</a></li>
+                    <li class="li"><a class="a" href="/sobre-nos">Sobre Nós</a></li>
+                    <li class="li"><a class="a" href="/produtos">Geleias</a></li>
+                    <li class="li"><a class="a" href="#" id="contato-btn-dropdown">Contato</a></li>
+
             </div>
         </header>
     </div>
@@ -147,13 +147,13 @@
     <section class="sobre-nos">
         <div class="container-sobre-nos">
             <div class="about-content">
-                <h1>Sobre Sitío Alto da Serra</h1>
+                <h1>Sobre Sítio Alto da Serra</h1>
                 <p th:text="${about.getDescription()}">Ops... houve um erro ao carregar o texto.</p>
                 <button class="btn-sobre-nos">Veja Mais</button>
             </div>
 
             <div class="about-image">
-                <img class="about-image" th:src="'data:image/png;base64,' + ${about.getBase64Image()}" alt="">
+                <img th:src="'data:image/png;base64,' + ${about.getBase64Image()}" alt="">
             </div>
         </div>
     </section>
@@ -285,22 +285,22 @@
 
 
     <!-- FOOTER -->
-    <footer class="footer">
-        <div class="container-footer">
+    <footer class="footer" >
+        <div class="container-footer" style="padding: 0 15px">
             <div class="row">
                 <div class="footer-col">
-                    <h4>Companhia</h4>
+                    <h4>Empresa</h4>
                     <ul>
-                        <li><a href="#">Sobre Nós</a></li>
-                        <li><a href="#">Nossos Serviços</a></li>
-                        <li><a href="#">Newsletter</a></li>
+                        <li><a href="/sobre-nos">Sobre Nós</a></li>
+                        <li><a href="#">our services</a></li>
+                        <li><a href="#">privacy policy</a></li>
+                        <li><a href="#">affiliate program</a></li>
                     </ul>
                 </div>
 
                 <div class="footer-col">
                     <h4>Contato</h4>
                     <ul>
-                        <!-- todo 3 resources (text only) here -->
                         <li><a href="#">Email: <br th:text="${email.description}"></a></li>
                         <li><a href="#">Phone: <br th:text="${phone.description}"></a></li>
                         <li><a href="#">Endereço: <br th:text="${address.description}"></a></li>
@@ -310,7 +310,6 @@
                 <div class="footer-col">
                     <h4>Nossas Redes Sociais</h4>
                     <div class="social-links">
-                        <!-- todo 3 resources (text only) here (redirect links) -->
                         <a th:href="${facebook.description}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a th:href="${instagram.description}" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a th:href="${whatsapp.description}" target="_blank"><i class="fab fa-whatsapp"></i></a>
@@ -329,6 +328,7 @@
     <!-- SCRIPTS -->
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
     <script src="/scripts/index.js"></script>
+    <script scr="/scripts/navbar.js"></script>
     <!-- scipt tooglebutton -->
      <script>
         const toggleBtn = document.querySelector('.toggle_btn')
@@ -344,7 +344,19 @@
             : "fa-solid fa-bars"
         }
      </script>
+     <script>
+        // script.js
+        document.getElementById('contato-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+        });
 
+        document.getElementById('contato-btn-dropdown').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+        });
+
+     </script>
 </body>
 
 </html>
