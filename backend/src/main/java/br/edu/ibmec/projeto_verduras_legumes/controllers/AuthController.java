@@ -8,7 +8,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
+import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.models.User;
+import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 import br.edu.ibmec.projeto_verduras_legumes.services.UserService;
 
 @Controller
@@ -17,11 +19,17 @@ public class AuthController {
 	@Autowired
 	private UserService userService;
 
+	@Autowired
+	private ResourceService resourceService;
+
 	@GetMapping({ "/login" })
 	public String login(Model model) {
+		Resource banner = resourceService.findByID(1);
+		model.addAttribute("banner", banner);
+
 		model.addAttribute("user", new User());
 
-		return "login";
+		return "auth/login";
 	}
 
 	@GetMapping("/register")
