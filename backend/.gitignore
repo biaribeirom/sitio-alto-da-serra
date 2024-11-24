@@ -1,7 +1,8 @@
 HELP.md
-data/
-.mov.db
-.db
+# data/
+# .mov.db
+# .db
+.lock.db
 target/
 !.mvn/wrapper/maven-wrapper.jar
 !**/src/main/**/target/
