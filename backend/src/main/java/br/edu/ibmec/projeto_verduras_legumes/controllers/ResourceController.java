@@ -18,6 +18,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
+import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceNotFoundException;
 
 @Controller
 @RequestMapping("/resource")
@@ -25,29 +26,35 @@ public class ResourceController {
 	@Autowired
 	private ResourceService resourceService;
 
-	// @PostMapping({ "/login" })
-	// public String login(@RequestBody UserModel userModel) {
-	// return "login";
-	// }
-
-	@GetMapping("/{id}")
-	public @ResponseBody Resource interface_register(@PathVariable("id") Integer id) {
-		return resourceService.findByID(id);
-	}
-
-	@PostMapping("/create")
-	public @ResponseBody String process_register(@RequestParam("image") MultipartFile image, Resource resource) {
+	@PostMapping("/update")
+	public @ResponseBody String update_resource(@RequestParam("image") MultipartFile image, Resource resource) {
 		try {
-			resource.image = image.getBytes();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-			return "it in fact did not work";
+			resourceService.findByID(resource.getId());
+		} catch (ResourceNotFoundException e) {
+			return "buddy tryna update nothing :sob:";
 		}
 
 		resourceService.save(resource);
 
 		return "it worked uhhh the id is " + resource.getId();
 	}
+
+	// somente ativar quando for criar novos recursos, o que necessita editar o site
+	// inteiro
+	// @PostMapping("/create")
+	// public @ResponseBody String process_register(@RequestParam("image")
+	// MultipartFile image, Resource resource) {
+	// try {
+	// resource.image = image.getBytes();
+
+	// } catch (IOException e) {
+	// e.printStackTrace();
+	// return "it in fact did not work";
+	// }
+
+	// resourceService.save(resource);
+
+	// return "it worked uhhh the id is " + resource.getId();
+	// }
 
 }

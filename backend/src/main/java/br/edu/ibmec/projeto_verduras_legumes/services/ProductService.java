@@ -30,6 +30,10 @@ public class ProductService {
 		throw new ResourceNotFoundException();
 	}
 
+	public void delete(Integer id) {
+		productRepository.deleteById(id);
+	}
+
 	public Product[] getProducts() {
 		return productRepository.findAll().toArray(Product[]::new);
 	}

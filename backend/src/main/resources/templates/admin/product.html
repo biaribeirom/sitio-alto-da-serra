@@ -71,9 +71,9 @@
 							<td th:text="${product.description}">Ops... Houve um erro ao carregar o produto.</td>
 							<td th:text="${product.getPrice()}">R$ ???,??</td>
 							<td>
-								<button class="btn-edit" data-bs-toggle="modal" data-bs-target="#editProductModal">Editar</button>
-								<button class="btn-outofstock">Fora de Estoque</button>
-								<button class="btn-delete" data-bs-toggle="modal" data-bs-target="#deleteProductModal">Remover</button>
+								<button class="btn-edit" data-bs-toggle="modal" th:attr="data-bs-target='#editProductModal' + ${product.getId()}">Editar</button>
+								<!-- <button class="btn-outofstock">Fora de Estoque</button> -->
+								<button class="btn-delete" data-bs-toggle="modal" th:attr="data-bs-target='#deleteProductModal' + ${product.getId()}">Remover</button>
 							</td>
 						</tr>
 					</a>
@@ -90,7 +90,12 @@
     <div id="addProductModal" class="modal fade" tabindex="-1" aria-labelledby="addProductModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form id="addProductForm">
+                <form
+                    id="addProductForm"
+                    th:action="@{/produtos/upload}"
+                    th:object="${product}"
+                    method="post"
+                >
                     <div class="modal-header">
                         <h5 class="modal-title" id="addProductModalLabel">Adicionar Produto</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -98,23 +103,25 @@
                     <div class="modal-body">
                         <div class="mb-3">
                             <label for="productName" class="form-label">Nome do Produto</label>
-                            <input type="text" class="form-control" id="productName" required>
+                            <input type="text" class="form-control" id="productName" th:field="*{name}" required>
                         </div>
                         <div class="mb-3">
                             <label for="productDescription" class="form-label">Descrição</label>
-                            <textarea class="form-control" id="productDescription" required></textarea>
+                            <textarea class="form-control" id="productDescription" required th:field="*{description}"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="productStock" class="form-label">Estoque</label>
-                            <input type="number" class="form-control" id="productStock" required>
+                            <input type="number" class="form-control" id="productStock" th:field="*{stock}" required>
                         </div>
 						<div class="mb-3">
+                            <!-- problema aqui, double nao consgue virar string -->
+                             <!-- todo -->
                             <label for="productPrice" class="form-label">Preço</label>
-                            <input type="number" class="form-control" id="productPrice" required>
+                            <input type="number" class="form-control" id="productPrice"  required>
                         </div>
                         <div class="mb-3">
                             <label for="productImage" class="form-label">Imagem do Produto</label>
-                            <input type="file" class="form-control" id="productImage" required>
+                            <input type="file" class="form-control" id="productImage"  required>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -128,10 +135,16 @@
 
     <!-- Modal Editar Produto -->
 	<!-- todo th:each generate one modal per item -->
-    <div id="editProductModal" class="modal fade">
+	 <!-- make modals functional/make the endpoints you lazy fuck -->
+	 <a th:each="product : ${products}">
+	 <div th:id="'editProductModal'+${product.getId()}" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
-                <form>
+                <form
+                    th:action="@{/produtos/update}"
+                    th:object="${product}"
+                    method="post"
+                >
                     <div class="modal-header">
                         <h4 class="modal-title">Editar Produto</h4>
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -139,19 +152,24 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nome do Produto</label>
-                            <input type="text" class="form-control" required>
+                            <input type="text" class="form-control" required th:value="${product.getName()}" th:field="*{name}">
                         </div>
                         <div class="form-group">
                             <label>Descrição</label>
-                            <textarea class="form-control" required></textarea>
+                            <!-- nao sei como carrega texto pra dentro de textarea, necessito de wifi -->
+                             <!-- tentei th:value="${product.getDescription()}" -->
+                            <textarea class="form-control" required th:field="*{description}"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Preço</label>
-                            <input type="number" class="form-control" required>
+                            <input type="number" class="form-control" required th:value="${product.getPricePlain()}">
                         </div>
                         <div class="form-group">
+                            <!-- fudeu, nao sei como retroativamente insere a imagem de volta aq. -->
+                             <!-- testei th:value="'data:image/png;base64,' + ${product.getImage()}" -->
+                             <!-- preciso de wifi aq tambem -->
                             <label>Imagem do Produto</label>
-                            <input type="file" class="form-control">
+                            <input type="file" class="form-control" >
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -162,29 +180,33 @@
             </div>
         </div>
     </div>
+	</a>
 
     <!-- Modal Remover Produto -->
-	<!-- todo th:each generate one modal per item -->
-    <div id="deleteProductModal" class="modal fade">
-        <div class="modal-dialog">
-            <div class="modal-content">
-                <form>
-                    <div class="modal-header">
-                        <h4 class="modal-title">Remover Produto</h4>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <p>Tem certeza de que deseja remover este produto?</p>
-                        <p class="text-warning"><small>Essa ação não pode ser desfeita.</small></p>
-                    </div>
-                    <div class="modal-footer">
-                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
-                        <input type="submit" class="btn btn-danger" value="Remover">
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
+    <a th:each="product : ${products}">
+    	<div th:id="'deleteProductModal'+${product.getId()}" class="modal fade">
+	        <div class="modal-dialog">
+	            <div class="modal-content">
+	                <form
+						th:action="${product.makeDeleteEndpoint()}"
+						method="get">
+	                    <div class="modal-header">
+	                        <h4 class="modal-title">Remover Produto</h4>
+	                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+	                    </div>
+	                    <div class="modal-body">
+	                        <p>Tem certeza de que deseja remover este produto?</p>
+	                        <p class="text-warning"><small>Essa ação não pode ser desfeita.</small></p>
+	                    </div>
+	                    <div class="modal-footer">
+	                        <input type="button" class="btn btn-default" data-bs-dismiss="modal" value="Cancelar">
+	                        <input type="submit" class="btn btn-danger" value="Remover">
+	                    </div>
+	                </form>
+	            </div>
+	        </div>
+	    </div>
+    </a>
 
     <!-- FOOTER -->
 	<footer class="footer">
@@ -287,10 +309,6 @@
     // Fechar o modal após adicionar o produto
     const addProductModal = bootstrap.Modal.getInstance(document.getElementById('addProductModal'));
     addProductModal.hide();
-	const editProductModal = bootstrap.Modal.getInstance(document.getElementById('editProductModal'));
-    editProductModal.hide();
-	const deleteProductModal = bootstrap.Modal.getInstance(document.getElementById('deleteProductModal'));
-    deleteProductModal.hide();
 });</script>
   </body>
 </html>

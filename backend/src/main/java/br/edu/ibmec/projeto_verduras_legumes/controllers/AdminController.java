@@ -99,6 +99,9 @@ public class AdminController {
 		Product[] produtos = productService.getProducts();
 		model.addAttribute("products", produtos);
 
+		// new empty product for the form
+		model.addAttribute("product", new Product());
+
 		return "admin/product";
 	}
 }

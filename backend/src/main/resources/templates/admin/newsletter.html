@@ -57,13 +57,6 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <!-- todo th:each here -->
-                    <!-- <tr>
-                        <td>rafaoambrosio@gmail.com</td>
-                    </tr>
-                    <tr>
-                        <td>auwdbo@hotmail.com</td>
-                    </tr> -->
                     <a th:each="newsletter : ${newsletters}">
                         <tr>
                             <td th:text="${newsletter.getEmail()}">Ops... houve um erro ao carregar a newsletter.</td>

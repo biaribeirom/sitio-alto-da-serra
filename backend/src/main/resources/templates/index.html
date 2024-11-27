@@ -176,9 +176,11 @@
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
                                         <img th:src="'data:image/png;base64,' + ${dummy_product_2.getBase64Image()}" alt="Card Image" class="card-image-processos" />
-                                        <p class="card-text" th:text="${dummy_product_2.getDescription()}">
-                                            Ops... houve um erro ao carregar o texto.
-                                        </p>
+                                        <div class="processos-text">
+                                            <p class="card-text" th:text="${dummy_product_2.getDescription()}">
+                                                Ops... houve um erro ao carregar o texto.
+                                            </p>
+                                        </div>
 
                                     </a>
                                 </li>
@@ -186,9 +188,11 @@
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
                                         <img th:src="'data:image/png;base64,' + ${dummy_product_3.getBase64Image()}" alt="Card Image" class="card-image-processos" />
-                                        <p class="card-text" th:text="${dummy_product_3.getDescription()}">
-                                            Ops... houve um erro ao carregar o texto.
-                                        </p>
+                                        <div class="processos-text">
+                                            <p class="card-text" th:text="${dummy_product_3.getDescription()}">
+                                                Ops... houve um erro ao carregar o texto.
+                                            </p>
+                                        </div>
 
                                     </a>
                                 </li>
@@ -211,7 +215,6 @@
 
     <section class="section-testimonial">
         <div class="section__container">
-            <!-- todo insert 3 resources (text and image) here -->
             <div class="header">
               <h1>Depoimentos</h1>
               <p>Veja o que nossos clientes estão dizendo!</p>

@@ -65,6 +65,10 @@ public class Product {
 		return "R$" + price;
 	}
 
+	public Double getPricePlain() {
+		return price;
+	}
+
 	public void setPrice(Double price) {
 		this.price = price;
 	}
@@ -83,5 +87,9 @@ public class Product {
 
 	public String getImage() {
 		return Base64.getEncoder().encodeToString(image);
+	}
+
+	public String makeDeleteEndpoint() {
+		return "/produtos/delete/" + ID;
 	}
 }

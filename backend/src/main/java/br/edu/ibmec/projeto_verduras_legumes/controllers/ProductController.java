@@ -2,6 +2,7 @@ package br.edu.ibmec.projeto_verduras_legumes.controllers;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -23,6 +24,7 @@ import br.edu.ibmec.projeto_verduras_legumes.services.ProductService;
 import br.edu.ibmec.projeto_verduras_legumes.services.ProductViewService;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 import br.edu.ibmec.projeto_verduras_legumes.utils.ModelHelper;
+import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceNotFoundException;
 
 @Controller
 @RequestMapping("/produtos")
@@ -71,6 +73,32 @@ public class ProductController {
 		productService.save(product);
 
 		return "product uploaded, id is: " + product.getId();
+	}
+
+	@PostMapping("/update")
+	public @ResponseBody String update_product(Product product) {
+		try {
+			resourceService.findByID(product.getId());
+		} catch (ResourceNotFoundException e) {
+			return "buddy tryna update nothing :sob:";
+		}
+
+		productService.save(product);
+
+		return "product uploaded, id is: " + product.getId();
+	}
+
+	@GetMapping("/delete/{id}")
+	public String delete_product(@PathVariable("id") Integer id, Model model) {
+		// productService.delete(id);
+		System.out.println(
+				"dawg i was gonna delete product " + id
+						+ " but im thankful for god today. bismillah may allah bless this code.");
+
+		// redirect/reload idk
+
+		// todo
+		return "/error";
 	}
 
 	@GetMapping({ "", "/", "/home" })
