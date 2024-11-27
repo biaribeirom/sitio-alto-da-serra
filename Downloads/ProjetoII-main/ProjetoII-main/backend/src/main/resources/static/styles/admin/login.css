@@ -1,0 +1,652 @@
+/* import Google Gonts Inter */
+@import url("https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+	font-family: "EB Garamond", sans-serif;
+}
+
+section {
+	margin: 80px auto;
+	padding: 0 32px;
+}
+
+body {
+	background-color: #f3f3f3;
+	background-size: cover;
+	background-position: center;
+}
+
+h1 {
+	font-size: 36px;
+	font-weight: lighter;
+	text-align: center;
+	color: #64732f;
+}
+
+h2 {
+	margin-top: 16px;
+	text-align: center;
+}
+
+p {
+	margin-top: 16px;
+	text-align: center;
+}
+
+/* CARROSEL CATÁLOGO */
+
+.section-title h1 {
+	font-size: 36px;
+	font-weight: lighter;
+	text-align: center;
+	color: #64732f;
+}
+
+.section-title p {
+	margin: 24px 24px;
+	font-size: 18px;
+	text-align: center;
+}
+
+.div-carrousel {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	min-height: 45vh;
+}
+
+.card-wrapper {
+	max-width: 1100px;
+	margin: 0 60px 35px;
+	padding: 20px 10px;
+	overflow: hidden;
+}
+
+.card-list .card-item {
+	list-style: none;
+}
+
+.card-list .card-item .card-link {
+	list-style: none;
+	display: block;
+	background: #fff;
+	padding: 18px;
+	border-radius: 12px;
+	text-decoration: none;
+	border: 2px solid transparent;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.05);
+	transition: 0.2s ease;
+	align-items: center;
+	display: flex;
+	flex-direction: column;
+}
+
+.card-list .card-item .card-link:active {
+	cursor: grabbing;
+}
+
+.card-list .card-item .card-link:hover {
+	border-color: #18492c;
+}
+
+.card-list .card-link .card-image {
+	width: 100%;
+	height: 280px;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.card-list .card-link .card-image-processos {
+	width: 100%;
+	height: 380px;
+	aspect-ratio: 16/9;
+	object-fit: cover;
+	border-radius: 10px;
+}
+
+.card-list .card-link .badge {
+	color: #18492c;
+	padding: 8px 16px;
+	font-size: 0.95rem;
+	font-weight: 500;
+	margin: 16px 0 18px;
+	background: #dde4ff;
+	width: fit-content;
+	border-radius: 50px;
+}
+
+.card-list .card-link .badge.geleia-cambuci-com-manga {
+	color: yellow;
+	background: greenyellow;
+}
+
+.card-list .card-link .card-title {
+	font-size: 1.19rem;
+	color: #000;
+	font-weight: 600;
+}
+
+.processos-text {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	height: 100%; /* Certifique-se de que a altura da div esteja definida */
+	text-align: center; /* Centraliza o texto horizontalmente dentro do p */
+}
+
+.card-list .card-link .card-text {
+	margin: 24px 0;
+	font-size: 16px;
+	color: #000;
+	font-weight: normal;
+	align-items: center;
+	text-align: center;
+	height: 80px;
+}
+
+.card-list .card-link .card-button {
+	height: 40px;
+	width: 80%;
+	color: #18492c;
+	border-radius: 25px;
+	margin: 30px 0 5px;
+	background: none;
+	cursor: pointer;
+	border: 2px solid #18492c;
+	transition: 0.4s ease;
+}
+
+.card-list .card-link:hover .card-button {
+	color: #fff;
+	background: #18492c;
+}
+
+.card-wrapper .swiper-pagination-bullet {
+	height: 13px;
+	width: 13px;
+	opacity: 0.5;
+	background: #18492c;
+}
+
+.card-wrapper .swiper-pagination-bullet-active {
+	opacity: 1;
+}
+
+.card-wrapper .swiper-slide-button {
+	color: #18492c;
+	margin-top: -35px;
+}
+
+/* NAV YT */
+
+.li {
+	list-style: none;
+}
+
+.a {
+	text-decoration: none;
+	color: #fff;
+	font-size: 1rem;
+}
+
+.a:hover {
+	color: #fff;
+	scale: 1.05;
+	transition: 0.3s;
+	transform: ease-in-out;
+}
+
+.a:active {
+	scale: 0.95;
+}
+
+/* HEADER NAVBAR */
+
+.bannernav {
+	/* min-height: 100vh; */
+	/* background-image: url(/images/banner2\ 1517-960.png); */
+	background-position: bottom center;
+	background-size: cover;
+}
+
+header {
+	position: relative;
+	padding: 0 2rem;
+}
+
+.navbar {
+	width: 100%;
+	height: 60px;
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+.navbar .logo a {
+	font-size: 1.5rem;
+	font-weight: bold;
+}
+
+.navbar .links {
+	display: flex;
+	gap: 2rem;
+	padding-right: 120px;
+}
+
+.navbar .toggle_btn {
+	color: #fff;
+	font-size: 1.5rem;
+	cursor: pointer;
+	display: none;
+}
+
+.action_btn {
+	background-color: #fff;
+	color: #000;
+	padding: 0.5rem 1rem;
+	border: none;
+	outline: none;
+	border-radius: 10px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+}
+
+.action_btn:hover {
+	scale: 1.01;
+	color: #000;
+	transition: 0.3s;
+	transform: ease-in-out;
+}
+
+.action_btn:active {
+	scale: 0.95;
+}
+
+/* DROPDOWN MENU */
+.dropdown_menu {
+	display: none;
+	position: absolute;
+	right: 2rem;
+	top: 60px;
+	width: 300px;
+	height: 0;
+	background: rgba(255, 255, 255, 0.1);
+	backdrop-filter: blur(15px);
+	border-radius: 10px;
+	overflow: hidden;
+	z-index: 1000;
+	transition: height 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+	margin-top: 16px;
+}
+
+.dropdown_menu.open {
+	height: 240px;
+}
+
+.dropdown_menu .li {
+	padding: 0.7rem;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+.dropdown_menu .action_btn {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+
+/* ABOUT US - SOBRE NÓS */
+
+.container-sobre-nos {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	padding: 0 80px;
+}
+
+.about-content {
+	max-width: 500px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	align-items: start;
+}
+
+.about-content h1 {
+	font-size: 36px;
+	font-weight: lighter;
+	color: #64732f;
+}
+
+.about-content p {
+	margin: 24px 16px 24px 0;
+	font-size: 18px;
+	text-align: left;
+}
+
+.container-sobre-nos .about-content h1 {
+	font-size: 36px;
+	color: #64732f;
+}
+
+.container-sobre-nos .about-content p {
+	font-family: "EB Garamond", sans-serif;
+}
+
+.about-image img {
+	border-radius: 20px;
+	/* background-image: url(/images/Geleia\ Amora\ Preta.png); */
+	max-width: 100%;
+}
+
+.btn-sobre-nos {
+	background-color: #18492c;
+	color: #fff;
+	padding: 0.8rem 2rem;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.btn-sobre-nos:hover {
+	scale: 1.05;
+	transition: 0.3s;
+	transform: ease-in-out;
+}
+
+/* TESTIMONIALS */
+
+.section__container {
+	width: 100%;
+	max-width: 1200px;
+	margin: auto;
+	padding: 1rem;
+	text-align: center;
+}
+
+.header {
+	margin-bottom: 2rem;
+}
+
+.header p {
+	letter-spacing: 2px;
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.testimonials__grid {
+	width: 100%;
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 2rem;
+	margin-bottom: 2rem;
+}
+
+.card {
+	padding: 2rem;
+	display: grid;
+	gap: 1rem;
+	background-color: #fff;
+	border-radius: 12px;
+	box-shadow: 5px 5px 30px rgba(0, 0, 0, 0.1);
+	cursor: pointer;
+}
+
+.card i {
+	font-size: 2.5rem;
+	color: gold;
+}
+
+.card p {
+	font-size: 1rem;
+	font-weight: 500;
+}
+
+.card hr {
+	width: 40px;
+	margin: auto;
+	color: var(--text-light);
+}
+
+.card img {
+	width: 60px;
+	height: 60px;
+	margin: auto;
+	border-radius: 100%;
+	border: 1px solid var(--primary-color);
+}
+
+.card .name {
+	font-size: 0.9rem;
+	font-weight: 400;
+	color: var(--text-light);
+	transition: 0.3s;
+}
+
+.card .name:hover {
+	color: var(--primary-color);
+}
+
+/* NEWSLETTER */
+
+.container-newsletter {
+	display: flex;
+	justify-content: center;
+	gap: 8px;
+}
+
+.container-newsletter input[type="email"] {
+	border: none;
+	padding: 0.8rem 1rem;
+	outline: none;
+	border-radius: 5px;
+	width: 75%;
+	font-size: 0.9rem;
+	font-weight: normal;
+}
+
+.newsletter-btn {
+	background-color: #18492c;
+	color: #fff;
+	padding: 0.8rem 2rem;
+	border: none;
+	outline: none;
+	border-radius: 5px;
+	font-size: 0.9rem;
+	font-weight: normal;
+	cursor: pointer;
+}
+
+.newsletter-btn:hover {
+	scale: 1.05;
+	transition: 0.3s;
+	transform: ease-in-out;
+}
+
+/* FOOTER */
+
+.container-footer {
+	max-width: 1170px;
+	margin: auto;
+	font-family: "Poppins", sans-serif;
+}
+.row {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-between;
+}
+ul {
+	list-style: none;
+}
+.footer {
+	background-color: #18492c;
+	padding: 70px 0;
+}
+.footer-col {
+	width: 25%;
+	padding: 0 15px;
+}
+.footer-col h4 {
+	font-size: 18px;
+	color: #ffffff;
+	/* text-transform: capitalize; */
+	margin-bottom: 35px;
+	font-weight: 500;
+	position: relative;
+}
+.footer-col h4::before {
+	content: "";
+	position: absolute;
+	left: 0;
+	bottom: -10px;
+	background-color: #fff;
+	height: 2px;
+	box-sizing: border-box;
+	width: 50px;
+}
+.footer-col ul li:not(:last-child) {
+	margin-bottom: 10px;
+}
+.footer-col ul li a {
+	font-size: 16px;
+	/* text-transform: capitalize; */
+	color: #ffffff;
+	text-decoration: none;
+	font-weight: 300;
+	color: #bbbbbb;
+	display: block;
+	transition: all 0.3s ease;
+}
+.footer-col ul li a:hover {
+	color: #ffffff;
+	padding-left: 8px;
+}
+.footer-col .social-links a {
+	display: inline-block;
+	height: 40px;
+	width: 40px;
+	background-color: rgba(255, 255, 255, 0.2);
+	margin: 0 10px 10px 0;
+	text-align: center;
+	line-height: 40px;
+	border-radius: 50%;
+	color: #ffffff;
+	transition: all 0.5s ease;
+}
+.footer-col .social-links a:hover {
+	color: #24262b;
+	background-color: #ffffff;
+}
+
+/* RESPONSIVE */
+
+@media (max-width: 1300px) {
+	.about-image img {
+		border-radius: 20px;
+		background-image: url(/images/sobre\ nos\ 1.png);
+	}
+}
+
+@media (max-width: 992px) {
+	.navbar .links,
+	.navbar .action_btn {
+		display: none;
+	}
+
+	.navbar .toggle_btn {
+		display: block;
+	}
+
+	.dropdown_menu {
+		display: block;
+	}
+
+	.dropdown_menu {
+		left: 2rem;
+		width: unset;
+	}
+
+	.container-sobre-nos {
+		flex-direction: column;
+		gap: 30px;
+		align-items: center;
+		padding: 0;
+	}
+
+	.container-sobre-nos .about-content {
+		align-items: center;
+	}
+
+	.container-sobre-nos .about-content h1 {
+		font-size: 36px;
+		color: #64732f;
+		text-align: center;
+	}
+
+	.container-sobre-nos .about-content p {
+		font-family: "EB Garamond", sans-serif;
+		text-align: center;
+	}
+
+	.testimonials__grid {
+		grid-template-columns: repeat(2, 1fr);
+		gap: 1rem;
+	}
+}
+
+@media screen and (max-width: 768px) {
+	.card-wrapper {
+		margin: 0 10px 25px;
+	}
+
+	.card-wrapper .swiper-slide-button {
+		display: none;
+	}
+
+	.card-list .card-link .card-text {
+		height: 50px;
+	}
+
+	.footer-col {
+		width: 50%;
+		margin-bottom: 30px;
+	}
+
+	.container-newsletter {
+		display: flex;
+		flex-direction: column;
+		gap: 8px;
+	}
+
+	.container-newsletter input[type="email"] {
+		width: 100%;
+	}
+}
+
+@media (max-width: 578px) {
+	.footer-col {
+		width: 100%;
+	}
+
+	@media (width < 600px) {
+		.testimonials__grid {
+			grid-template-columns: repeat(1, 1fr);
+		}
+	}
+}
