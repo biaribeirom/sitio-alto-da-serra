@@ -38,7 +38,7 @@
                     <li class="li"><a class="a" href='/home'>Home</a></li>
                     <li class="li"><a class="a" href="/sobre-nos">Sobre Nós</a></li>
                     <li class="li"><a class="a" href="/produtos">Geleias</a></li>
-                    <li class="li"><a class="a" href="#" id="contato-btn">Contato</a></li>
+                    <li class="li"><a class="a" href="/admin">Admin</a></li>
                 </ul>
 
                 <div class="toggle_btn">
@@ -51,7 +51,7 @@
                 <li class="li"><a class="a" href="/home">Home</a></li>
                     <li class="li"><a class="a" href="/sobre-nos">Sobre Nós</a></li>
                     <li class="li"><a class="a" href="/produtos">Geleias</a></li>
-                    <li class="li"><a class="a" href="#" id="contato-btn-dropdown">Contato</a></li>
+                    <li class="li"><a class="a" href="/admin">Admin</a></li>
 
             </div>
         </header>
@@ -90,20 +90,25 @@
     		</div>
     </section>
 
-	    <!-- NEWSLETTER -->
+    <!-- NEWSLETTER -->
 
-		<section class="section-testimonial">
-			<div class="section__container">
-				<div class="header">
-				  <h1>Saboreie Nossas Novidades</h1>
-				  <p>Mantenha-se atualizado com as últimas delícias e promoções do Sítio Alto da Serra</p>
-				</div>
-				<form class="container-newsletter">
-					<input type="email" placeholder="Email">
-					<button class="newsletter-btn">Inscreva-se</button>
-				</form>
+    <section class="section-testimonial">
+        <div class="section__container">
+            <div class="header">
+                <h1>Saboreie Nossas Novidades</h1>
+                <p>Mantenha-se atualizado com as últimas delícias e promoções do Sítio Alto da Serra</p>
+            </div>
+            <form
+                class="container-newsletter"
+                th:action="@{/newsletter/register}"
+                th:object="${newsletter}"
+                method="post"
+            >
+                <input type="email" placeholder="Email" th:field="*{email}">
+                <button class="newsletter-btn" type="submit">Inscreva-se</button>
+            </form>
 
-		</section>
+    </section>
 
 
 

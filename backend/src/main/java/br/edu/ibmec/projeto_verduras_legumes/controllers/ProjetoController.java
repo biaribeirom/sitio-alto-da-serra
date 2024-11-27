@@ -12,6 +12,7 @@ import br.edu.ibmec.projeto_verduras_legumes.models.Product;
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.services.ProductService;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
+import br.edu.ibmec.projeto_verduras_legumes.utils.ModelHelper;
 
 @Controller
 @RequestMapping("/")
@@ -24,115 +25,55 @@ public class ProjetoController {
 
 	@GetMapping({ "", "/", "/index", "/index.html", "/home" })
 	public String index(Model model) {
-		Resource banner = resourceService.findByID(1);
-		model.addAttribute("banner", banner);
+		ModelHelper modelHelper = new ModelHelper(resourceService, model);
 
-		Resource about = resourceService.findByID(2);
-		// System.out.println(aboutImage);
-		model.addAttribute("about", about);
+		modelHelper.addBanner();
 
-		Resource dummyProduct1 = resourceService.findByID(3);
-		model.addAttribute("dummy_product_1", dummyProduct1);
-		Resource dummyProduct2 = resourceService.findByID(4);
-		model.addAttribute("dummy_product_2", dummyProduct2);
-		Resource dummyProduct3 = resourceService.findByID(5);
-		model.addAttribute("dummy_product_3", dummyProduct3);
+		modelHelper.addResource(2, "about");
 
-		Resource testimonial1 = resourceService.findByID(6);
-		model.addAttribute("testimonial_1", testimonial1);
-		Resource testimonial2 = resourceService.findByID(7);
-		model.addAttribute("testimonial_2", testimonial2);
-		Resource testimonial3 = resourceService.findByID(8);
-		model.addAttribute("testimonial_3", testimonial3);
+		modelHelper.addResource(3, "dummy_product_1");
+		modelHelper.addResource(4, "dummy_product_2");
+		modelHelper.addResource(4, "dummy_product_3");
 
-		Resource email = resourceService.findByID(9);
-		model.addAttribute("email", email);
-		Resource phone = resourceService.findByID(10);
-		model.addAttribute("phone", phone);
-		Resource address = resourceService.findByID(11);
-		model.addAttribute("address", address);
+		Product[] products = productService.getProducts();
+		model.addAttribute("products", products);
 
-		Resource facebook = resourceService.findByID(12);
-		model.addAttribute("facebook", facebook);
-		Resource instagram = resourceService.findByID(13);
-		model.addAttribute("instagram", instagram);
-		Resource whatsapp = resourceService.findByID(14);
-		model.addAttribute("whatsapp", whatsapp);
+		modelHelper.addResource(6, "testimonial_1");
+		modelHelper.addResource(7, "testimonial_2");
+		modelHelper.addResource(8, "testimonial_3");
 
-		// String[] products = productService.getProducts();
+		modelHelper.addFooterThings();
+
+		modelHelper.addEmptyNewsletter();
 
 		return "/index";
 	}
 
 	@GetMapping("/sobre-nos")
 	public String sobrenos(Model model) {
-		Resource banner = resourceService.findByID(1);
-		model.addAttribute("banner", banner);
+		ModelHelper modelHelper = new ModelHelper(resourceService, model);
 
-		// Resource about = resourceService.findByID(2);
-		// model.addAttribute("about", about);
-		Resource about_us = resourceService.findByID(15);
-		model.addAttribute("about_us", about_us);
+		modelHelper.addBanner();
 
-		Resource who_are_we_image_1 = resourceService.findByID(16);
-		model.addAttribute("who_are_we_image_1", who_are_we_image_1);
-		Resource who_are_we_image_2 = resourceService.findByID(17);
-		model.addAttribute("who_are_we_image_2", who_are_we_image_2);
-		Resource who_are_we_text = resourceService.findByID(18);
-		model.addAttribute("who_are_we_text", who_are_we_text);
+		modelHelper.addResource(15, "about_us");
 
-		Resource objective_text = resourceService.findByID(19);
-		model.addAttribute("objective_text", objective_text);
-		Resource objective_1 = resourceService.findByID(20);
-		model.addAttribute("objective_1", objective_1);
-		Resource objective_2 = resourceService.findByID(21);
-		model.addAttribute("objective_2", objective_2);
-		Resource objective_3 = resourceService.findByID(22);
-		model.addAttribute("objective_3", objective_3);
-		Resource objective_4 = resourceService.findByID(23);
-		model.addAttribute("objective_4", objective_4);
+		modelHelper.addResource(16, "who_are_we_image_1");
+		modelHelper.addResource(17, "who_are_we_image_2");
+		modelHelper.addResource(18, "who_are_we_text");
 
-		Resource email = resourceService.findByID(9);
-		model.addAttribute("email", email);
-		Resource phone = resourceService.findByID(10);
-		model.addAttribute("phone", phone);
-		Resource address = resourceService.findByID(11);
-		model.addAttribute("address", address);
+		modelHelper.addResource(19, "objective_text");
+		modelHelper.addResource(20, "objective_1");
+		modelHelper.addResource(21, "objective_2");
+		modelHelper.addResource(22, "objective_3");
+		modelHelper.addResource(23, "objective_4");
 
-		Resource facebook = resourceService.findByID(12);
-		model.addAttribute("facebook", facebook);
-		Resource instagram = resourceService.findByID(13);
-		model.addAttribute("instagram", instagram);
-		Resource whatsapp = resourceService.findByID(14);
-		model.addAttribute("whatsapp", whatsapp);
+		modelHelper.addFooterThings();
 
 		return "/sobrenos";
 	}
 
-	@GetMapping("/produtos")
-	public String catalogo(Model model) {
-		// different banner
-		Resource banner = resourceService.findByID(24);
-		model.addAttribute("banner", banner);
-
-		// todo implement product loading logic here
-		Product[] products = productService.getProducts();
-		model.addAttribute("products", products);
-
-		Resource email = resourceService.findByID(9);
-		model.addAttribute("email", email);
-		Resource phone = resourceService.findByID(10);
-		model.addAttribute("phone", phone);
-		Resource address = resourceService.findByID(11);
-		model.addAttribute("address", address);
-
-		Resource facebook = resourceService.findByID(12);
-		model.addAttribute("facebook", facebook);
-		Resource instagram = resourceService.findByID(13);
-		model.addAttribute("instagram", instagram);
-		Resource whatsapp = resourceService.findByID(14);
-		model.addAttribute("whatsapp", whatsapp);
-
-		return "/catalogo";
+	@GetMapping("/error")
+	public String error(Model model) {
+		return "/error";
 	}
 }

@@ -17,17 +17,22 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import br.edu.ibmec.projeto_verduras_legumes.models.Product;
+import br.edu.ibmec.projeto_verduras_legumes.models.ProductView;
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.services.ProductService;
+import br.edu.ibmec.projeto_verduras_legumes.services.ProductViewService;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
+import br.edu.ibmec.projeto_verduras_legumes.utils.ModelHelper;
 
 @Controller
-@RequestMapping("/product")
+@RequestMapping("/produtos")
 public class ProductController {
 	@Autowired
 	private ProductService productService;
 	@Autowired
 	private ResourceService resourceService;
+	@Autowired
+	private ProductViewService productViewService;
 
 	// @PostMapping({ "/login" })
 	// public String login(@RequestBody UserModel userModel) {
@@ -36,30 +41,24 @@ public class ProductController {
 
 	@GetMapping("/{id}")
 	public String interface_register(@PathVariable("id") Integer id, Model model) {
-		Resource banner = resourceService.findByID(1);
-		model.addAttribute("banner", banner);
+		ModelHelper modelHelper = new ModelHelper(resourceService, model);
+
+		modelHelper.addBanner();
+
+		// ! trampo da bia
+		productViewService.incrementView(id);
 
 		Product product = productService.findByID(id);
 		model.addAttribute("product", product);
 
-		Resource email = resourceService.findByID(9);
-		model.addAttribute("email", email);
-		Resource phone = resourceService.findByID(10);
-		model.addAttribute("phone", phone);
-		Resource address = resourceService.findByID(11);
-		model.addAttribute("address", address);
-
-		Resource facebook = resourceService.findByID(12);
-		model.addAttribute("facebook", facebook);
-		Resource instagram = resourceService.findByID(13);
-		model.addAttribute("instagram", instagram);
-		Resource whatsapp = resourceService.findByID(14);
-		model.addAttribute("whatsapp", whatsapp);
+		modelHelper.addFooterThings();
 
 		return "/product";
 	}
 
-	@PostMapping("/create")
+	// talvez desativar isso / colocar auth seria bom,
+	// todo
+	@PostMapping("/upload")
 	public @ResponseBody String process_register(@RequestParam("image") MultipartFile image, Product product) {
 		try {
 			product.image = image.getBytes();
@@ -71,7 +70,24 @@ public class ProductController {
 
 		productService.save(product);
 
-		return "it worked uhhh the id is " + product.getId();
+		return "product uploaded, id is: " + product.getId();
+	}
+
+	@GetMapping({ "", "/", "/home" })
+	public String catalogo(Model model) {
+		ModelHelper modelHelper = new ModelHelper(resourceService, model);
+
+		// different banner
+		modelHelper.addResource(24, "banner");
+
+		Product[] products = productService.getProducts();
+		model.addAttribute("products", products);
+
+		modelHelper.addFooterThings();
+
+		modelHelper.addEmptyNewsletter();
+
+		return "/catalogo";
 	}
 
 }
