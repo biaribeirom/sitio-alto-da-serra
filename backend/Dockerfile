@@ -14,5 +14,5 @@ COPY --from=build $JAR_FILE /app/runner.jar
 EXPOSE 8000
 WORKDIR /app
 # copy db in
-COPY --from=build /usr/app/data /app/data
+COPY --from=build /usr/app/data/projeto.mv.db /app/data/projeto.mv.db
 ENTRYPOINT java -jar ./runner.jar
