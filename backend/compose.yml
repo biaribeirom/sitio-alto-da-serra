@@ -1,0 +1,19 @@
+services:
+    projeto:
+        build: .
+        volumes:
+            - ./data:/app/data
+        container_name: ProjetoIBMEC
+        image: ProjetoIBMEC
+        networks:
+            projeto_ibmec_net:
+                aliases:
+                    - ProjetoIBMEC
+            default:
+                aliases:
+                    - ProjetoIBMEC
+        restart: unless-stopped
+
+networks:
+    projeto_ibmec_net:
+        name: projeto_ibmec_net
