@@ -3,7 +3,7 @@ services:
         build: backend
         volumes:
             - type: bind
-              source: ./data
+              source: ./backend/data
               target: /app/data
         container_name: projeto_ibmec
         image: projeto_ibmec
