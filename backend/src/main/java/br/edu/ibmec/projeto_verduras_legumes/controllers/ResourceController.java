@@ -38,7 +38,7 @@ public class ResourceController {
 			old = resourceService.findByID(id);
 		} catch (ResourceNotFoundException e) {
 			System.out.println("product not found, id is: " + id);
-			return "/error";
+			return "error";
 		}
 
 		if (old.type != ResourceType.IMAGE) {
@@ -55,7 +55,7 @@ public class ResourceController {
 				imageBytes = image.getBytes();
 			} catch (IOException e) {
 				e.printStackTrace();
-				return "/error";
+				return "error";
 			}
 			if (imageBytes.length == 0) {
 				resource.image = old.image;

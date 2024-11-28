@@ -46,7 +46,7 @@ public class ProjetoController {
 
 		modelHelper.addEmptyNewsletter();
 
-		return "/index";
+		return "index";
 	}
 
 	@GetMapping("/sobre-nos")
@@ -69,11 +69,11 @@ public class ProjetoController {
 
 		modelHelper.addFooterThings();
 
-		return "/sobrenos";
+		return "sobrenos";
 	}
 
 	@GetMapping("/error")
 	public String error(Model model) {
-		return "/error";
+		return "error";
 	}
 }

@@ -39,7 +39,7 @@ public class Product {
 	}
 
 	public String getURL() {
-		return "/product/" + ID;
+		return "product/" + ID;
 	}
 
 	public void setID(Integer id) {
@@ -96,6 +96,6 @@ public class Product {
 	}
 
 	public String makeDeleteEndpoint() {
-		return "/produtos/delete/" + ID;
+		return "produtos/delete/" + ID;
 	}
 }

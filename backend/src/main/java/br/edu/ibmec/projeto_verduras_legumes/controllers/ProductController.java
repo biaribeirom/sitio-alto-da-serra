@@ -56,7 +56,7 @@ public class ProductController {
 
 		modelHelper.addFooterThings();
 
-		return "/product";
+		return "product";
 	}
 
 	// talvez desativar isso / colocar auth seria bom,
@@ -69,7 +69,7 @@ public class ProductController {
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "/error";
+			return "error";
 		}
 
 		productService.save(product);
@@ -85,7 +85,7 @@ public class ProductController {
 			old = productService.findByID(id);
 		} catch (ResourceNotFoundException e) {
 			System.out.println("product not found, id is: " + id);
-			return "/error";
+			return "error";
 		}
 
 		// reconcile nulls on new with old
@@ -110,7 +110,7 @@ public class ProductController {
 			imageBytes = image.getBytes();
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "/error";
+			return "error";
 		}
 		if (imageBytes.length == 0) {
 			product.image = old.image;
@@ -147,7 +147,7 @@ public class ProductController {
 
 		modelHelper.addEmptyNewsletter();
 
-		return "/catalogo";
+		return "catalogo";
 	}
 
 }
