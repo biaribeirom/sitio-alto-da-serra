@@ -13,4 +13,6 @@ ARG JAR_FILE=/usr/app/target/*.jar
 COPY --from=build $JAR_FILE /app/runner.jar
 EXPOSE 8000
 WORKDIR /app
+# copy db in
+COPY --from=build /usr/app/data /app/data
 ENTRYPOINT java -jar ./runner.jar
