@@ -12,4 +12,5 @@ FROM eclipse-temurin:21-jre-jammy
 ARG JAR_FILE=/usr/app/target/*.jar
 COPY --from=build $JAR_FILE /app/runner.jar
 EXPOSE 8000
-ENTRYPOINT java -jar /app/runner.jar
+WORKDIR /app
+ENTRYPOINT java -jar ./runner.jar
