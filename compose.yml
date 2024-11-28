@@ -2,9 +2,11 @@ services:
     projeto:
         build: backend
         volumes:
-            - ./data:/app/data
-        container_name: projeto_ibmec
-        image: projeto_ibmec
+            - type: bind
+              source: ./data
+              target: /app/data
+        container_name: ProjetoIBMEC
+        image: ProjetoIBMEC
         networks:
             projeto_ibmec_net:
                 aliases:
