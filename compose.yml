@@ -5,8 +5,8 @@ services:
             - type: bind
               source: ./data
               target: /app/data
-        container_name: ProjetoIBMEC
-        image: ProjetoIBMEC
+        container_name: projeto_ibmec
+        image: projeto_ibmec
         networks:
             projeto_ibmec_net:
                 aliases:
