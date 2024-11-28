@@ -83,28 +83,8 @@
                     <div class="container swiper">
                         <div class="card-wrapper">
                             <ul class="card-list swiper-wrapper" >
-
-                                <!-- SUBSTITUIR COM TH:EACH -->
-
                                 <tr th:each="product : ${products}">
-                                    <!-- <a class="card-produto" th:href="${product.getURL()}">
-                                        <div class="col-md-6 col-lg-3 ftco-animate">
-                                            <div class="product">
-                                                <a th:href="${product.getURL()}" class="img-prod"><img class="img-fluid"  th:src="'data:image/png;base64,' + ${product.getImage()}" alt="Colorlib Template">
-                                                    <span class="status" th:if="${product.isSoldOut()}">Esgotado</span>
-                                                    <div class="overlay"></div>
-                                                </a>
-                                                <div class="text py-3 pb-4 px-3 text-center card-info">
-                                                    <h3><a th:href="${product.getURL()}" th:text="${product.getName()}">Ops... houve um erro ao carregar o produto.</a></h3>
-                                                    <button class= "card-button" th:attr="onclick='window.location.href=\'' + ${product.getURL()} + '\''">
-                                                        Ver Produto
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a> -->
-                                    <li class="card-item swiper-slide" style="">
+                                    <li class="card-item swiper-slide">
                                         <a href="#" class="card-link">
                                             <img th:src="'data:image/png;base64,' + ${product.getImage()}" alt="Card Image" class="card-image" />
                                             <h2 class="card-title" th:href="${product.getURL()}" th:text="${product.getName()}">
@@ -136,7 +116,9 @@
             <div class="about-content">
                 <h1>Sobre Sítio Alto da Serra</h1>
                 <p th:text="${about.getDescription()}">Ops... houve um erro ao carregar o texto.</p>
-                <a href="/sobre-nos"><button class="btn-sobre-nos">Veja Mais</button></a>
+                <a href="/sobre-nos">
+                    <button class="btn-sobre-nos">Veja Mais</button>
+                </a>
             </div>
 
             <div class="about-image">
@@ -284,10 +266,10 @@
                 <div class="footer-col">
                     <h4>Empresa</h4>
                     <ul>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/sobre-nos">Sobre Nós</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
+                        <li><a href="/produtos">Geleias</a></li>
+                        <li><a href="/admin">Admin</a></li>
                     </ul>
                 </div>
 

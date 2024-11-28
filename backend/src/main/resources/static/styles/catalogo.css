@@ -346,13 +346,16 @@ header {
 .container-footer {
 	max-width: 1170px;
 	margin: auto;
-	font-family: "Poppins", sans-serif;
+	font-family: "EB Garamond", sans-serif !important;
 }
-.row-footer {
+/* ESSE ROW É OQ TÁ QUEBRANDO O CATALOGO */
+.footer .row {
 	display: flex;
 	flex-wrap: wrap;
-	justify-content: space-between;
+	justify-content: flex-start;
+	gap: 9rem; /* Adiciona mais espaçamento entre as colunas */
 }
+
 ul {
 	list-style: none;
 }
@@ -363,31 +366,31 @@ ul {
 .footer-col {
 	width: 25%;
 	padding: 0 15px;
+	margin-bottom: 40px; /* Adiciona espaçamento inferior entre as colunas em telas menores */
 }
 .footer-col h4 {
-	font-size: 18px;
+	font-size: 18px; /* Certifique-se de que o tamanho está igual */
 	color: #ffffff;
-	/* text-transform: capitalize; */
-	margin-bottom: 35px;
+	margin-bottom: 35px; /* Espaçamento abaixo */
 	font-weight: 500;
-	position: relative;
+	position: relative; /* Permite o uso de pseudo-elementos */
+	text-align: left; /* Alinha o texto à esquerda */
 }
 .footer-col h4::before {
-	content: "";
+	content: ""; /* Gera a linha decorativa */
 	position: absolute;
-	left: 0;
-	bottom: -10px;
-	background-color: #fff;
-	height: 2px;
+	left: 0; /* Posiciona a linha na borda esquerda */
+	bottom: -10px; /* Ajusta a posição vertical */
+	background-color: #fff; /* Define a cor da linha */
+	height: 2px; /* Define a altura da linha */
 	box-sizing: border-box;
-	width: 50px;
+	width: 50px; /* Largura da linha decorativa */
 }
 .footer-col ul li:not(:last-child) {
 	margin-bottom: 10px;
 }
 .footer-col ul li a {
 	font-size: 16px;
-	/* text-transform: capitalize; */
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
@@ -421,7 +424,7 @@ ul {
 @media (max-width: 1300px) {
 	.about-image img {
 		border-radius: 20px;
-		/* background-image: url(/frontend/static/images/sobre\ nos\ 1.png); */
+		/* background-image: url(/ProjetoII-main/frontend/static/images/sobre\ nos\ 1.png); */
 	}
 }
 
