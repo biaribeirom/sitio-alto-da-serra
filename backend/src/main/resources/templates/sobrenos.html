@@ -232,14 +232,14 @@
             <div class="linha-conhecanossosite align-items-center">
                 <div class="coluna-imagem-conhecanossosite">
                     <div class="imagem-wrapper-conhecanossosite">
-                        <img class="imagem-conhecanossosite" src="/frontend/static/images/siteoutro.png" alt="Imagem do outro site">
+                        <img class="imagem-conhecanossosite" th:src="'data:image/png;base64,' + ${other_site.getImage()}" alt="Imagem do outro site">
                     </div>
                 </div>
                 <div class="coluna-texto-conhecanossosite">
                     <div class="texto-wrapper-conhecanossosite">
                         <h2 class="titulo-conhecanossosite">Conheça nosso outro Site</h2>
-                        <p class="descricao-conhecanossosite">Apesar de termos esse site de comercialização de geleias, temos um outro site de comércio eletrônico, onde você pode encontrar uma variedade de produtos, incluindo geleias, processados, frutas e outras delícias. Este site é dedicado a oferecer uma experiência de compra conveniente e segura para nossos clientes.
-                        <a href="https://fazafeira.com/sitiodoaltodaserra" target="_blank">https://fazafeira.com/sitiodoaltodaserra</a></p>
+                        <p class="descricao-conhecanossosite" th:text="${other_site.description}"></p>
+                        </p>
                     </div>
                 </div>
             </div>

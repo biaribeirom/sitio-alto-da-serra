@@ -67,6 +67,8 @@ public class ProjetoController {
 		modelHelper.addResource(22, "objective_3");
 		modelHelper.addResource(23, "objective_4");
 
+		modelHelper.addResource(25, "other_site");
+
 		modelHelper.addFooterThings();
 
 		return "sobrenos";

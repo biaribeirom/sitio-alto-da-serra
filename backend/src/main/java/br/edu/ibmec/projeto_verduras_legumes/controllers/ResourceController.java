@@ -83,20 +83,19 @@ public class ResourceController {
 
 	// somente ativar quando for criar novos recursos, o que necessita editar o site
 	// inteiro
-	// @PostMapping("/create")
-	// public @ResponseBody String process_register(@RequestParam("image")
-	// MultipartFile image, Resource resource) {
-	// try {
-	// resource.image = image.getBytes();
+	@PostMapping("/create")
+	public @ResponseBody String process_register(@RequestParam("image") MultipartFile image, Resource resource) {
+		try {
+			resource.image = image.getBytes();
 
-	// } catch (IOException e) {
-	// e.printStackTrace();
-	// return "it in fact did not work";
-	// }
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "it in fact did not work";
+		}
 
-	// resourceService.save(resource);
+		resourceService.save(resource);
 
-	// return "it worked uhhh the id is " + resource.getID();
-	// }
+		return "it worked uhhh the id is " + resource.getID();
+	}
 
 }
