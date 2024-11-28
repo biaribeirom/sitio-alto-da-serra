@@ -51,8 +51,17 @@ public class ProductController {
 		// ! trampo da bia
 		productViewService.incrementView(id);
 
+		// montar msg de whatsapp
+		Resource phone = resourceService.findByID(10);
+		String phoneString = phone.getDescription().replace(" ", "").replace("+", "").replace("(", "").replace(")", "")
+				.replace("-", "");
+
 		Product product = productService.findByID(id);
 		model.addAttribute("product", product);
+
+		String whatsappLink = "https://wa.me/" + phoneString + "?text=Olá eu quero uma " + product.getName() + "!";
+
+		model.addAttribute("whatsappLink", whatsappLink);
 
 		modelHelper.addFooterThings();
 

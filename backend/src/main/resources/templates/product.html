@@ -109,8 +109,9 @@
 								style="max-width: 3rem"
 							/>
 							<a
-								href="https://wa.me/5511955701502?text=Olá%20eu%20quero%20uma%20Geleia%20Amora%20Preta!"
+								th:href="${whatsappLink}"
 								target="_blank"
+								id="whatsappLink"
 							>
 								<button
 									class="btn btn-outline-dark flex-shrink-0"
@@ -196,11 +197,19 @@
 						document.querySelector("#inputQuantity").value;
 					var whatsappLink = document.querySelector("#whatsappLink");
 
+					console.log(quantity);
+
 					// Texto da mensagem com a quantidade escolhida
-					var message = `Olá%20eu%20quero%20${quantity}%20unidades%20de%20Geleia%20Amora%20Preta.`;
+					var message = whatsappLink.href
+						.replace("uma", quantity + " unidades de")
+						.replace(
+							/(.\d||uma)%20unidade(?:s)?%20de/gm,
+							quantity + " unidades de"
+						);
 
 					// Atualizar o href com a quantidade
-					whatsappLink.href = `https://wa.me/5511955701502?text=${message}`;
+					console.log(message);
+					whatsappLink.href = message;
 				});
 		</script>
 		<script src="/scripts/navbar.js"></script>
