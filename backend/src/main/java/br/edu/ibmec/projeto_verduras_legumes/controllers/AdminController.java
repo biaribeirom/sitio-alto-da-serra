@@ -89,7 +89,7 @@ public class AdminController {
 		return "admin/newsletter";
 	}
 
-	@GetMapping("/produtos")
+	@GetMapping({ "/produtos", "/produto", "/product", "/products" })
 	public String admin_product(Model model) {
 		ModelHelper modelHelper = new ModelHelper(resourceService, model);
 
@@ -103,5 +103,21 @@ public class AdminController {
 		model.addAttribute("product", new Product());
 
 		return "admin/product";
+	}
+
+	@GetMapping({ "/resources", "/resource", "/recursos", "/recurso" })
+	public String admin_resource(Model model) {
+		ModelHelper modelHelper = new ModelHelper(resourceService, model);
+
+		modelHelper.addBanner();
+		modelHelper.addFooterThings();
+
+		Resource[] resources = resourceService.getResources();
+		model.addAttribute("resources", resources);
+
+		// new empty product for the form
+		model.addAttribute("resource", new Resource());
+
+		return "admin/resource";
 	}
 }

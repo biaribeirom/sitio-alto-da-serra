@@ -26,7 +26,7 @@
 
 		<div
 			class="bannernav"
-			th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+			th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 		>
 			<header>
 				<div class="navbar">
@@ -92,7 +92,9 @@
 							<!-- <span class="text-decoration-line-through"
 								>$45.00</span
 							> -->
-							<span th:text="${product.getPrice()}">$???.??</span>
+							<span th:text="${product.getPricePretty()}"
+								>$???.??</span
+							>
 						</div>
 						<p class="lead" th:text="${product.description}">
 							Ops... houve um erro ao carregar a descrição do

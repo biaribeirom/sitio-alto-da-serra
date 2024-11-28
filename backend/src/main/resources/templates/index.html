@@ -26,7 +26,7 @@
 
     <div
 			class="bannernav"
-			th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+			th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 		>
 			<header>
 				<div class="navbar">
@@ -136,11 +136,11 @@
             <div class="about-content">
                 <h1>Sobre Sítio Alto da Serra</h1>
                 <p th:text="${about.getDescription()}">Ops... houve um erro ao carregar o texto.</p>
-                <button class="btn-sobre-nos">Veja Mais</button>
+                <a href="/sobre-nos"><button class="btn-sobre-nos">Veja Mais</button></a>
             </div>
 
             <div class="about-image">
-                <img th:src="'data:image/png;base64,' + ${about.getBase64Image()}" alt="">
+                <img th:src="'data:image/png;base64,' + ${about.getImage()}" alt="">
             </div>
         </div>
     </section>
@@ -162,7 +162,7 @@
 
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getImage()}" alt="Card Image" class="card-image-processos" />
                                         <div class="processos-text">
                                             <p class="card-text" th:text="${dummy_product_1.getDescription()}">
                                                 Ops... houve um erro ao carregar o texto.
@@ -175,7 +175,7 @@
 
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img th:src="'data:image/png;base64,' + ${dummy_product_2.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_2.getImage()}" alt="Card Image" class="card-image-processos" />
                                         <div class="processos-text">
                                             <p class="card-text" th:text="${dummy_product_2.getDescription()}">
                                                 Ops... houve um erro ao carregar o texto.
@@ -187,7 +187,7 @@
 
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img th:src="'data:image/png;base64,' + ${dummy_product_3.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_3.getImage()}" alt="Card Image" class="card-image-processos" />
                                         <div class="processos-text">
                                             <p class="card-text" th:text="${dummy_product_3.getDescription()}">
                                                 Ops... houve um erro ao carregar o texto.
@@ -226,7 +226,7 @@
                     Ops... houve um erro ao carregar o texto.
                 </p>
                 <hr />
-                <img th:src="'data:image/png;base64,' + ${testimonial_1.getBase64Image()}" />
+                <img th:src="'data:image/png;base64,' + ${testimonial_1.getImage()}" />
                 <p class="name" th:text="${testimonial_1.testimonialPart2()}">
                     Ops... houve um erro ao carregar o texto.
                 </p>
@@ -237,7 +237,7 @@
                     Ops... houve um erro ao carregar o texto.
                 </p>
                 <hr />
-                <img th:src="'data:image/png;base64,' + ${testimonial_2.getBase64Image()}" />
+                <img th:src="'data:image/png;base64,' + ${testimonial_2.getImage()}" />
                 <p class="name" th:text="${testimonial_2.testimonialPart2()}">
                     Ops... houve um erro ao carregar o texto.
                 </p>
@@ -248,7 +248,7 @@
                     Ops... houve um erro ao carregar o texto.
                 </p>
                 <hr />
-                <img th:src="'data:image/png;base64,' + ${testimonial_3.getBase64Image()}" />
+                <img th:src="'data:image/png;base64,' + ${testimonial_3.getImage()}" />
                 <p class="name" th:text="${testimonial_3.testimonialPart2()}">
                     Ops... houve um erro ao carregar o texto.
                 </p>

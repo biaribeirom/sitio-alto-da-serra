@@ -6,6 +6,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import br.edu.ibmec.projeto_verduras_legumes.models.Product;
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.repository.ResourceRepository;
 import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceNotFoundException;
@@ -30,11 +31,7 @@ public class ResourceService {
 		throw new ResourceNotFoundException();
 	}
 
-	// public String[] getProducts() {
-	// return resourceRepository
-	// .findAll()
-	// .stream()
-	// .map(resource -> getImage(resource))
-	// .toArray(String[]::new);
-	// }
+	public Resource[] getResources() {
+		return resourceRepository.findAll().toArray(Resource[]::new);
+	}
 }

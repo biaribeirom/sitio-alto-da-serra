@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import br.edu.ibmec.projeto_verduras_legumes.models.Newsletter;
 import br.edu.ibmec.projeto_verduras_legumes.services.NewsletterService;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
 @RequestMapping("/newsletter")
@@ -20,23 +21,20 @@ public class NewsletterController {
 	NewsletterService newsletterService;
 
 	@PostMapping("/register")
-	public String register_newsletter(Newsletter newsletter) {
-		newsletterService.save(newsletter);
+	public String register_newsletter(Newsletter newsletter, HttpServletRequest request) {
+		try {
+			newsletterService.save(newsletter);
+		} catch (Exception e) {
+			// ignore exceptions, page should reload anyways....
+		}
 
-		// try to redirect maybe....
-
-		// todo
-		return "/error";
+		return "redirect:" + request.getHeader("Referer");
 	}
 
-	// @DeleteMapping("/delete/<id>")
 	@DeleteMapping("/delete/{id}")
-	public String delete_newsletter(@PathVariable("id") Integer id, Model model) {
+	public String delete_newsletter(@PathVariable("id") Integer id, Model model, HttpServletRequest request) {
 		newsletterService.delete(id);
 
-		// redirect/reload idk
-
-		// todo
-		return "/error";
+		return "redirect:" + request.getHeader("Referer");
 	}
 }

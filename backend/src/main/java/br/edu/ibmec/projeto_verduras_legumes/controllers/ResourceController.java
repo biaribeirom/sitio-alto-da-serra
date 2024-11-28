@@ -16,27 +16,69 @@ import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 
+import br.edu.ibmec.projeto_verduras_legumes.models.Product;
 import br.edu.ibmec.projeto_verduras_legumes.models.Resource;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceNotFoundException;
+import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceType;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/resource")
+@RequestMapping({ "/resource", "/resources", "/recurso", "/recursos" })
 public class ResourceController {
 	@Autowired
 	private ResourceService resourceService;
 
-	@PostMapping("/update")
-	public @ResponseBody String update_resource(@RequestParam("image") MultipartFile image, Resource resource) {
+	@PostMapping("/update/{id}")
+	public String update_resource(@PathVariable("id") Integer id,
+			@RequestParam(name = "image", required = false) MultipartFile image,
+			Resource resource, HttpServletRequest request) {
+		Resource old;
 		try {
-			resourceService.findByID(resource.getId());
+			old = resourceService.findByID(id);
 		} catch (ResourceNotFoundException e) {
-			return "buddy tryna update nothing :sob:";
+			System.out.println("product not found, id is: " + id);
+			return "/error";
 		}
+
+		if (old.type != ResourceType.IMAGE) {
+			if (resource.getDescription() == null || resource.getDescription().isEmpty()) {
+				resource.setDescription(old.getDescription());
+			}
+		} else {
+			resource.description = old.description;
+		}
+
+		if (old.type != ResourceType.DESCRIPTION) {
+			byte[] imageBytes;
+			try {
+				imageBytes = image.getBytes();
+			} catch (IOException e) {
+				e.printStackTrace();
+				return "/error";
+			}
+			if (imageBytes.length == 0) {
+				resource.image = old.image;
+			} else {
+				resource.image = imageBytes;
+			}
+		} else {
+			resource.image = old.image;
+		}
+
+		resource.ID = id;
+		resource.type = old.type;
 
 		resourceService.save(resource);
 
-		return "it worked uhhh the id is " + resource.getId();
+		// get image from resource 9 and put it on 10, then save 10
+		Resource resource10 = resourceService.findByID(10);
+		Resource resource9 = resourceService.findByID(9);
+
+		resource10.image = resource9.image;
+		resourceService.save(resource10);
+
+		return "redirect:" + request.getHeader("Referer");
 	}
 
 	// somente ativar quando for criar novos recursos, o que necessita editar o site
@@ -54,7 +96,7 @@ public class ResourceController {
 
 	// resourceService.save(resource);
 
-	// return "it worked uhhh the id is " + resource.getId();
+	// return "it worked uhhh the id is " + resource.getID();
 	// }
 
 }

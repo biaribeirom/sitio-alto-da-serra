@@ -4,6 +4,7 @@ import java.util.Base64;
 
 import org.springframework.web.multipart.MultipartFile;
 
+import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceType;
 import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,12 +12,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
-
-enum ResourceType {
-	IMAGE, // 0
-	DESCRIPTION, // 1
-	BOTH, // 2
-}
 
 @Entity
 @Table(name = "RESOURCES", schema = "PROJETO")
@@ -36,11 +31,11 @@ public class Resource {
 	@Column(name = "TIPO", nullable = false)
 	public ResourceType type;
 
-	public Integer getId() {
+	public Integer getID() {
 		return ID;
 	}
 
-	public void setId(Integer id) {
+	public void setID(Integer id) {
 		this.ID = id;
 	}
 
@@ -60,8 +55,21 @@ public class Resource {
 		this.type = type;
 	}
 
-	public String getBase64Image() {
+	public String getImage() {
 		return Base64.getEncoder().encodeToString(image);
+	}
+
+	public String getTypePretty() {
+		switch (type) {
+			case IMAGE:
+				return "Imagem";
+			case DESCRIPTION:
+				return "Texto";
+			case BOTH:
+				return "Imagem e Texto";
+			default:
+				return "Tipo desconhecido";
+		}
 	}
 
 	public String testimonialPart1() {
