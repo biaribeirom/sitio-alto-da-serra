@@ -33,7 +33,7 @@ public class ProjetoController {
 
 		modelHelper.addResource(3, "dummy_product_1");
 		modelHelper.addResource(4, "dummy_product_2");
-		modelHelper.addResource(4, "dummy_product_3");
+		modelHelper.addResource(5, "dummy_product_3");
 
 		Product[] products = productService.getProducts();
 		model.addAttribute("products", products);

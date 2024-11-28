@@ -85,7 +85,7 @@
                             <ul class="card-list swiper-wrapper" >
                                 <tr th:each="product : ${products}">
                                     <li class="card-item swiper-slide">
-                                        <a href="#" class="card-link">
+                                        <a th:href="${product.getURL()}" class="card-link">
                                             <img th:src="'data:image/png;base64,' + ${product.getImage()}" alt="Card Image" class="card-image" />
                                             <h2 class="card-title" th:href="${product.getURL()}" th:text="${product.getName()}">
                                                 Ops... houve um erro ao carregar o produto.
