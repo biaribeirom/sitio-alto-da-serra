@@ -33,7 +33,7 @@ public class ProjetoController {
 
 		modelHelper.addResource(3, "dummy_product_1");
 		modelHelper.addResource(4, "dummy_product_2");
-		modelHelper.addResource(4, "dummy_product_3");
+		modelHelper.addResource(5, "dummy_product_3");
 
 		Product[] products = productService.getProducts();
 		model.addAttribute("products", products);
@@ -46,7 +46,7 @@ public class ProjetoController {
 
 		modelHelper.addEmptyNewsletter();
 
-		return "/index";
+		return "index";
 	}
 
 	@GetMapping("/sobre-nos")
@@ -67,13 +67,15 @@ public class ProjetoController {
 		modelHelper.addResource(22, "objective_3");
 		modelHelper.addResource(23, "objective_4");
 
+		modelHelper.addResource(25, "other_site");
+
 		modelHelper.addFooterThings();
 
-		return "/sobrenos";
+		return "sobrenos";
 	}
 
 	@GetMapping("/error")
 	public String error(Model model) {
-		return "/error";
+		return "error";
 	}
 }

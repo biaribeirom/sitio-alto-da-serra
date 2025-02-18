@@ -25,6 +25,7 @@ public class Product {
 	public String description;
 
 	@Column(name = "PRECO", nullable = false)
+
 	public Double price;
 
 	@Column(name = "ESTOQUE", nullable = false)
@@ -33,15 +34,15 @@ public class Product {
 	@Column(name = "IMAGE", nullable = true, length = 268435456)
 	public byte[] image;
 
-	public Integer getId() {
+	public Integer getID() {
 		return ID;
 	}
 
 	public String getURL() {
-		return "/product/" + ID;
+		return "product/" + ID;
 	}
 
-	public void setId(Integer id) {
+	public void setID(Integer id) {
 		this.ID = id;
 	}
 
@@ -61,16 +62,21 @@ public class Product {
 		this.name = name;
 	}
 
-	public String getPrice() {
-		return "R$" + price;
-	}
-
-	public Double getPricePlain() {
+	public Double getPrice() {
 		return price;
 	}
 
+	public String getPricePretty() {
+		return "R$" + price;
+	}
+
+	// so quem prestou atencao na aula do israel sabe esse truque
 	public void setPrice(Double price) {
 		this.price = price;
+	}
+
+	public void setPrice(String price) {
+		this.price = Double.parseDouble(price);
 	}
 
 	public Integer getStock() {
@@ -90,6 +96,6 @@ public class Product {
 	}
 
 	public String makeDeleteEndpoint() {
-		return "/produtos/delete/" + ID;
+		return "produtos/delete/" + ID;
 	}
 }

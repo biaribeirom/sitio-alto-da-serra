@@ -4,6 +4,25 @@
 @import url("https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400..800;1,400..800&family=Playfair+Display:ital,wght@0,400..900;1,400..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap");
 
+body {
+	font-family: "EB Garamond", sans-serif;
+	background-color: #f3f3f3;
+}
+
+h1,
+h2,
+h3 {
+	font-family: "Playfair Display", serif;
+	color: #232421;
+}
+
+p,
+li,
+span {
+	font-family: "EB Garamond", sans-serif;
+	font-size: 18px;
+}
+
 .navbar {
 	font-family: "EB Garamond", sans-serif;
 }
@@ -20,6 +39,157 @@
 	width: 32px;
 	height: 32px;
 	/* Outras customizações */
+}
+
+/* Seção principal */
+.secao-conhecanossosite {
+	padding: 5rem 0;
+	background-color: #f3f3f3;
+}
+
+/* Container principal */
+.container-conhecanossosite {
+	max-width: 1200px;
+	margin: 0 auto;
+	padding: 0 1rem;
+}
+
+/* Linha */
+.linha-conhecanossosite {
+	display: flex;
+	align-items: flex-start; /* Alinha ao topo para evitar que a imagem vá para cima */
+	gap: 14rem; /* Mantém a distância entre o texto e a imagem */
+	flex-wrap: nowrap; /* Impede que os elementos quebrem para a próxima linha */
+	flex-direction: row-reverse; /* Garante que a imagem fique à esquerda e o texto à direita */
+}
+
+/* Coluna para imagem */
+.coluna-imagem-conhecanossosite {
+	flex: 1 1 50%; /* Aumenta o espaço ocupado pela imagem */
+}
+
+.imagem-wrapper-conhecanossosite {
+	margin: 0 auto;
+}
+
+.imagem-conhecanossosite {
+	max-width: 100%;
+	height: auto;
+	border-radius: 12px;
+	object-fit: cover;
+	transform: scale(1.5); /* Amplia a imagem levemente */
+	margin-bottom: 25px;
+	margin-right: 25px;
+}
+
+/* Coluna para texto */
+.coluna-texto-conhecanossosite {
+	flex: 1 1 70%; /* Aumenta a largura da coluna de texto */
+}
+
+.texto-wrapper-conhecanossosite {
+	margin-left: auto;
+	margin-right: auto;
+	padding: 0 1rem;
+	max-width: 800px; /* Permite que o texto ocupe mais espaço horizontalmente */
+	width: 100%;
+}
+
+/* Estilo do título */
+.titulo-conhecanossosite {
+	font-family: "Playfair Display", serif;
+	font-weight: bold;
+	color: #232421;
+	font-size: 2.5rem; /* Mantém o tamanho do título */
+	text-align: left; /* Garante alinhamento claro */
+	margin-bottom: 1rem;
+}
+
+/* Estilo do parágrafo */
+.descricao-conhecanossosite {
+	font-family: "EB Garamond", serif;
+	color: #333333;
+	margin-bottom: 1.5rem;
+	font-size: 1.25rem; /* Tamanho do texto confortável */
+	line-height: 1.8; /* Espaçamento entre linhas para melhorar a legibilidade */
+	text-align: justify; /* Texto justificado para boa aparência */
+}
+
+.descricao-conhecanossosite {
+	a {
+		color: #18492c; /* Ajuste a cor desejada aqui */
+		text-decoration: underline;
+	}
+	a:hover {
+		color: #64732f; /* Cor ao passar o mouse */
+	}
+}
+
+/* Ajustes de Responsividade para a Seção "Conheça Nosso Outro Site" */
+
+@media screen and (max-width: 768px) {
+	.linha-conhecanossosite {
+		flex-direction: column;
+		gap: 2rem;
+	}
+	.imagem-conhecanossosite {
+		transform: scale(1);
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+	.titulo-conhecanossosite {
+		text-align: center;
+	}
+	.descricao-conhecanossosite {
+		text-align: center;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 1317px) {
+	.linha-conhecanossosite {
+		flex-direction: row;
+		gap: 2rem;
+		align-items: center;
+		justify-content: center;
+		padding: 0 1rem;
+	}
+	.imagem-conhecanossosite {
+		transform: scale(1);
+		width: 100%;
+		height: auto;
+		margin: 0;
+		max-width: 600px;
+	}
+	.texto-wrapper-conhecanossosite {
+		max-width: 600px;
+	}
+	.titulo-conhecanossosite {
+		text-align: left;
+	}
+	.descricao-conhecanossosite {
+		text-align: justify;
+	}
+}
+
+@media (min-width: 992px) and (max-width: 1317px) {
+	.linha-conhecanossosite {
+		flex-direction: column;
+		align-items: center;
+		gap: 2rem;
+	}
+	.imagem-conhecanossosite {
+		transform: scale(1);
+		width: 100%;
+		height: auto;
+		margin: 0 auto;
+	}
+	.titulo-conhecanossosite {
+		text-align: center;
+	}
+	.descricao-conhecanossosite {
+		text-align: center;
+	}
 }
 
 /* NAV YT */
@@ -91,6 +261,7 @@ header {
 	font-size: 0.8rem;
 	font-weight: bold;
 	cursor: pointer;
+	font-family: "Poppins", sans-serif;
 }
 
 .action_btn:hover {
@@ -112,7 +283,7 @@ header {
 	top: 60px;
 	width: 300px;
 	height: 0;
-	background: rgba(169, 169, 169, 0.3);
+	background: rgba(169, 169, 169, 0.5);
 	backdrop-filter: blur(15px);
 	border-radius: 10px;
 	overflow: hidden;
@@ -288,13 +459,14 @@ header {
 .container-footer {
 	max-width: 1170px;
 	margin: auto;
-	font-family: "Poppins", sans-serif;
+	font-family: "EB Garamond", sans-serif !important;
 }
-.row {
+.footer .row {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: space-between;
 }
+
 ul {
 	list-style: none;
 }
@@ -309,7 +481,6 @@ ul {
 .footer-col h4 {
 	font-size: 18px;
 	color: #ffffff;
-	/* text-transform: capitalize; */
 	margin-bottom: 35px;
 	font-weight: 500;
 	position: relative;
@@ -329,13 +500,29 @@ ul {
 }
 .footer-col ul li a {
 	font-size: 16px;
-	/* text-transform: capitalize; */
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
 	color: #bbbbbb;
 	display: block;
-	transition: all 0.3s ease;
+}
+.footer-col ul {
+	padding: 0; /* Remove qualquer padding no <ul> */
+	margin: 0; /* Remove margens adicionais no <ul> */
+}
+
+.footer-col ul li {
+	padding: 0; /* Remove padding das <li> */
+	margin: 0; /* Remove margens das <li> */
+	list-style-position: inside; /* Garante que os marcadores fiquem dentro do contêiner */
+	text-align: left; /* Alinha o texto das <li> à esquerda */
+}
+
+.footer-col ul li a {
+	padding: 0; /* Remove padding extra */
+	margin: 0; /* Garante que não há margens extras */
+	text-align: left; /* Certifica-se de que os links estão alinhados */
+	display: block; /* Garante que cada link ocupe uma linha */
 }
 .footer-col ul li a:hover {
 	color: #ffffff;
@@ -363,7 +550,7 @@ ul {
 @media (max-width: 1300px) {
 	.about-image img {
 		border-radius: 20px;
-		background-image: url(/frontend/static/images/sobre\ nos\ 1.png);
+		/* background-image: url(/frontend/static/images/sobre\ nos\ 1.png); */
 	}
 }
 
@@ -438,7 +625,7 @@ ul {
 	}
 
 	.container-sobre-nos .about-content p {
-		font-family: "EB Garamond", sans-serif;
+		font-family: "EB Garamond", sans-serif !important;
 		text-align: center;
 	}
 

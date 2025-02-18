@@ -6,6 +6,22 @@
 
 
 
+
+body {
+    font-family: "EB Garamond", sans-serif;
+    background-color: #f3f3f3;
+}
+
+h1, h2, h3 {
+    font-family: "Playfair Display", serif;
+    color: #232421;
+}
+
+p, li, span {
+    font-family: "EB Garamond", sans-serif;
+    font-size: 18px;
+}
+
 .navbar{
     font-family:"EB Garamond", sans-serif;
 }
@@ -197,7 +213,7 @@
 
 .bannernav {
     min-height: 80px;
-    background-image: url(/frontend/static/images/banner-mobile.png);
+    background-image: url(/ProjetoII-main/frontend/static/images/banner-mobile.png);
     background-position: bottom center;
     background-size: cover;
   }
@@ -269,7 +285,7 @@
     top: 60px;
     width: 300px;
     height: 0;
-    background: rgba(169, 169, 169, 0.3);
+    background: rgba(169, 169, 169, 0.5);
     backdrop-filter: blur(15px);
     border-radius: 10px;
     overflow: hidden;
@@ -454,8 +470,9 @@
 .container-footer{
 	max-width: 1170px;
 	margin:auto;
-	font-family: 'Poppins', sans-serif;
+	font-family: "EB Garamond", sans-serif !important;
 }
+
 .row{
 	display: flex;
 	flex-wrap: wrap;
@@ -472,10 +489,10 @@ ul{
    width: 25%;
    padding: 0 15px;
 }
+
 .footer-col h4{
 	font-size: 18px;
 	color: #ffffff;
-	text-transform: capitalize;
 	margin-bottom: 35px;
 	font-weight: 500;
 	position: relative;
@@ -495,7 +512,6 @@ ul{
 }
 .footer-col ul li a{
 	font-size: 16px;
-	text-transform: capitalize;
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
@@ -524,12 +540,14 @@ ul{
 	background-color: #ffffff;
 }
 
+
+
 /* RESPONSIVE */
 
 @media (max-width: 1300px) {
     .about-image img {
         border-radius: 20px;
-        background-image: url(/frontend/static/images/sobre\ nos\ 1.png);
+        background-image: url(/ProjetoII-main/frontend/static/images/sobre\ nos\ 1.png);
     }
 }
 
@@ -587,7 +605,7 @@ ul{
     }
     .bannernav {
         min-height: 9vh;
-        background-image: url(/frontend/static/images/banner2\ 1517-960.png);
+        background-image: url(/ProjetoII-main/frontend/static/images/banner2\ 1517-960.png);
         background-position: bottom center;
         background-size: cover;
     }

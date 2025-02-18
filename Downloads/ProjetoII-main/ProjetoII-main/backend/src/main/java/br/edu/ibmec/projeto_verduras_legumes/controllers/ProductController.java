@@ -25,9 +25,10 @@ import br.edu.ibmec.projeto_verduras_legumes.services.ProductViewService;
 import br.edu.ibmec.projeto_verduras_legumes.services.ResourceService;
 import br.edu.ibmec.projeto_verduras_legumes.utils.ModelHelper;
 import br.edu.ibmec.projeto_verduras_legumes.utils.ResourceNotFoundException;
+import jakarta.servlet.http.HttpServletRequest;
 
 @Controller
-@RequestMapping("/produtos")
+@RequestMapping({ "/produtos", "/products", "/product", "/produto" })
 public class ProductController {
 	@Autowired
 	private ProductService productService;
@@ -50,55 +51,95 @@ public class ProductController {
 		// ! trampo da bia
 		productViewService.incrementView(id);
 
+		// montar msg de whatsapp
+		Resource phone = resourceService.findByID(10);
+		String phoneString = phone.getDescription().replace(" ", "").replace("+", "").replace("(", "").replace(")", "")
+				.replace("-", "");
+
 		Product product = productService.findByID(id);
 		model.addAttribute("product", product);
 
+		String whatsappLink = "https://wa.me/" + phoneString + "?text=Olá eu quero uma " + product.getName() + "!";
+
+		model.addAttribute("whatsappLink", whatsappLink);
+
 		modelHelper.addFooterThings();
 
-		return "/product";
+		return "product";
 	}
 
 	// talvez desativar isso / colocar auth seria bom,
 	// todo
 	@PostMapping("/upload")
-	public @ResponseBody String process_register(@RequestParam("image") MultipartFile image, Product product) {
+	public String process_register(@RequestParam("image") MultipartFile image, Product product,
+			HttpServletRequest request) {
 		try {
 			product.image = image.getBytes();
 
 		} catch (IOException e) {
 			e.printStackTrace();
-			return "it in fact did not work";
+			return "error";
 		}
 
 		productService.save(product);
 
-		return "product uploaded, id is: " + product.getId();
+		return "redirect:" + request.getHeader("Referer");
 	}
 
-	@PostMapping("/update")
-	public @ResponseBody String update_product(Product product) {
+	@PostMapping("/update/{id}")
+	public String update_product(@PathVariable("id") Integer id, @RequestParam("image") MultipartFile image,
+			Product product, HttpServletRequest request) {
+		Product old;
 		try {
-			resourceService.findByID(product.getId());
+			old = productService.findByID(id);
 		} catch (ResourceNotFoundException e) {
-			return "buddy tryna update nothing :sob:";
+			System.out.println("product not found, id is: " + id);
+			return "error";
 		}
+
+		// reconcile nulls on new with old
+		if (product.getName() == null || product.getName().isEmpty()) {
+			product.setName(old.getName());
+		}
+
+		if (product.getDescription() == null || product.getDescription().isEmpty()) {
+			product.setDescription(old.getDescription());
+		}
+
+		if (product.getPrice() == null) {
+			product.setPrice(old.getPrice());
+		}
+
+		if (product.getStock() == null) {
+			product.setStock(old.getStock());
+		}
+
+		byte[] imageBytes;
+		try {
+			imageBytes = image.getBytes();
+		} catch (IOException e) {
+			e.printStackTrace();
+			return "error";
+		}
+		if (imageBytes.length == 0) {
+			product.image = old.image;
+		} else {
+			product.image = imageBytes;
+
+		}
+
+		product.ID = id;
 
 		productService.save(product);
 
-		return "product uploaded, id is: " + product.getId();
+		return "redirect:" + request.getHeader("Referer");
 	}
 
 	@GetMapping("/delete/{id}")
-	public String delete_product(@PathVariable("id") Integer id, Model model) {
-		// productService.delete(id);
-		System.out.println(
-				"dawg i was gonna delete product " + id
-						+ " but im thankful for god today. bismillah may allah bless this code.");
+	public String delete_product(@PathVariable("id") Integer id, Model model, HttpServletRequest request) {
+		productService.delete(id);
 
-		// redirect/reload idk
-
-		// todo
-		return "/error";
+		return "redirect:" + request.getHeader("Referer");
 	}
 
 	@GetMapping({ "", "/", "/home" })
@@ -115,7 +156,7 @@ public class ProductController {
 
 		modelHelper.addEmptyNewsletter();
 
-		return "/catalogo";
+		return "catalogo";
 	}
 
 }

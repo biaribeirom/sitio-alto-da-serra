@@ -37,6 +37,7 @@ p, li, span {
     /* Outras customizações */
 }
 
+
 /* Seção principal */
 .secao-conhecanossosite {
     padding: 5rem 0;
@@ -111,31 +112,85 @@ p, li, span {
     text-align: justify; /* Texto justificado para boa aparência */
 }
 
-/* Responsividade */
-@media (max-width: 768px) {
-    .linha-conhecanossosite {
-        flex-direction: column; /* Reorganiza os elementos em coluna para telas pequenas */
-        gap: 2rem; /* Ajusta a distância para telas pequenas */
+.descricao-conhecanossosite {
+    a {
+        color: #18492C; /* Ajuste a cor desejada aqui */
+        text-decoration: underline;
     }
-
-    .coluna-imagem-conhecanossosite, .coluna-texto-conhecanossosite {
-        flex: 1 1 100%;
-    }
-
-    .titulo-conhecanossosite {
-        font-size: 2rem; /* Ajusta o tamanho do título em telas pequenas */
-        text-align: center;
-    }
-
-    .descricao-conhecanossosite {
-        font-size: 1.25rem; /* Ajusta o tamanho da fonte do parágrafo */
-        text-align: justify;
-    }
-
-    .imagem-conhecanossosite {
-        transform: scale(1); /* Remove o aumento em telas pequenas */
+    a:hover {
+        color: #64732F; /* Cor ao passar o mouse */
     }
 }
+
+/* Ajustes de Responsividade para a Seção "Conheça Nosso Outro Site" */
+
+@media screen and (max-width: 768px) {
+    .linha-conhecanossosite {
+        flex-direction: column;
+        gap: 2rem;
+    }
+    .imagem-conhecanossosite {
+        transform: scale(1);
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    .titulo-conhecanossosite {
+        text-align: center;
+    }
+    .descricao-conhecanossosite {
+        text-align: center;
+    }
+}
+
+
+@media (min-width: 768px) and (max-width: 1317px) {
+    .linha-conhecanossosite {
+        flex-direction: row;
+        gap: 2rem;
+        align-items: center;
+        justify-content: center;
+        padding: 0 1rem;
+    }
+    .imagem-conhecanossosite {
+        transform: scale(1);
+        width: 100%;
+        height: auto;
+        margin: 0;
+        max-width: 600px;
+    }
+    .texto-wrapper-conhecanossosite {
+        max-width: 600px;
+    }
+    .titulo-conhecanossosite {
+        text-align: left;
+    }
+    .descricao-conhecanossosite {
+        text-align: justify;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1317px) {
+    .linha-conhecanossosite {
+        flex-direction: column;
+        align-items: center;
+        gap: 2rem;
+    }
+    .imagem-conhecanossosite {
+        transform: scale(1);
+        width: 100%;
+        height: auto;
+        margin: 0 auto;
+    }
+    .titulo-conhecanossosite {
+        text-align: center;
+    }
+    .descricao-conhecanossosite {
+        text-align: center;
+    }
+}
+
+
 
 /* NAV YT */
 
@@ -229,7 +284,7 @@ p, li, span {
     top: 60px;
     width: 300px;
     height: 0;
-    background: rgba(169, 169, 169, 0.3);
+    background: rgba(169, 169, 169, 0.5);
     backdrop-filter: blur(15px);
     border-radius: 10px;
     overflow: hidden;
@@ -416,11 +471,12 @@ p, li, span {
 	margin:auto;
 	font-family: "EB Garamond", sans-serif !important;
 }
-.row{
-	display: flex;
-	flex-wrap: wrap;
-	justify-content: space-between;
+.footer .row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
 }
+
 ul{
 	list-style: none;
 }
@@ -435,7 +491,6 @@ ul{
 .footer-col h4{
 	font-size: 18px;
 	color: #ffffff;
-	text-transform: capitalize;
 	margin-bottom: 35px;
 	font-weight: 500;
 	position: relative;
@@ -455,14 +510,30 @@ ul{
 }
 .footer-col ul li a{
 	font-size: 16px;
-	text-transform: capitalize;
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
 	color: #bbbbbb;
 	display: block;
-	transition: all 0.3s ease;
 }
+.footer-col ul {
+    padding: 0; /* Remove qualquer padding no <ul> */
+    margin: 0; /* Remove margens adicionais no <ul> */
+  }
+  
+  .footer-col ul li {
+    padding: 0; /* Remove padding das <li> */
+    margin: 0; /* Remove margens das <li> */
+    list-style-position: inside; /* Garante que os marcadores fiquem dentro do contêiner */
+    text-align: left; /* Alinha o texto das <li> à esquerda */
+  }
+  
+  .footer-col ul li a {
+    padding: 0; /* Remove padding extra */
+    margin: 0; /* Garante que não há margens extras */
+    text-align: left; /* Certifica-se de que os links estão alinhados */
+    display: block; /* Garante que cada link ocupe uma linha */
+  }
 .footer-col ul li a:hover{
 	color: #ffffff;
 	padding-left: 8px;

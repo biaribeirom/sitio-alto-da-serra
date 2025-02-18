@@ -14,4 +14,9 @@ public class UserService {
 	public void save(User user) {
 		userRepository.save(user);
 	}
+
+    // Implementa o método para buscar o usuário pelo email
+    public User findByEmail(String email) {
+        return userRepository.findByEmail(email);
+    }
 }

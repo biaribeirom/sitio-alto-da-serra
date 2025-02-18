@@ -74,7 +74,6 @@ p {
 
 .card-list .card-item .card-link {
 	list-style: none;
-	display: block;
 	background: #fff;
 	padding: 18px;
 	border-radius: 12px;
@@ -85,6 +84,8 @@ p {
 	align-items: center;
 	display: flex;
 	flex-direction: column;
+	justify-content: space-between;
+	min-height: 460px;
 }
 
 .card-list .card-item .card-link:active {
@@ -204,7 +205,7 @@ p {
 
 .bannernav {
 	min-height: 100vh;
-	/* background-image: url(/images/banner2\ 1517-960.png); */
+	/* background-image: url(/frontend/static/images/banner2\ 1517-960.png); */
 	background-position: bottom center;
 	background-size: cover;
 }
@@ -273,7 +274,7 @@ header {
 	top: 60px;
 	width: 300px;
 	height: 0;
-	background: rgba(169, 169, 169, 0.3);
+	background: rgba(169, 169, 169, 0.5);
 	backdrop-filter: blur(15px);
 	border-radius: 10px;
 	overflow: hidden;
@@ -304,7 +305,7 @@ header {
 .container-sobre-nos {
 	display: flex;
 	align-items: center;
-	justify-content: space-between;
+	justify-content: space-evenly;
 	padding: 0 80px;
 	font-size: 20px; /* Aumenta a fonte do texto */
 }
@@ -344,7 +345,7 @@ header {
 
 .about-image img {
 	border-radius: 20px;
-	/* background-image: url(/images/Geleia\ Amora\ Preta.png); */
+	/* background-image: url(/frontend/static/images/Geleia\ Amora\ Preta.png); */
 	max-width: 100%;
 }
 
@@ -501,7 +502,7 @@ ul {
 .footer-col h4 {
 	font-size: 18px;
 	color: #ffffff;
-	/* text-transform: capitalize; */
+
 	margin-bottom: 35px;
 	font-weight: 500;
 	position: relative;
@@ -521,7 +522,7 @@ ul {
 }
 .footer-col ul li a {
 	font-size: 16px;
-	/* text-transform: capitalize; */
+
 	color: #ffffff;
 	text-decoration: none;
 	font-weight: 300;
@@ -555,7 +556,7 @@ ul {
 @media (max-width: 1300px) {
 	.about-image img {
 		border-radius: 20px;
-		/* background-image: url(/images/sobre\ nos\ 1.png); */
+		/* background-image: url(/frontend/static/images/sobre\ nos\ 1.png); */
 	}
 }
 

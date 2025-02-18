@@ -26,7 +26,7 @@
 
 		<div
 			class="bannernav"
-			th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+			th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 		>
 			<header>
 				<div class="navbar">
@@ -43,9 +43,7 @@
 						<li class="li">
 							<a class="a" href="/produtos">Geleias</a>
 						</li>
-						<li class="li">
-							<a class="a" href="/admin">Admin</a>
-						</li>
+						
 					</ul>
 
 					<div class="toggle_btn">
@@ -63,9 +61,7 @@
 					<li class="li">
 						<a class="a" href="/produtos">Geleias</a>
 					</li>
-					<li class="li">
-						<a class="a" href="/admin">Admin</a>
-					</li>
+					
 				</div>
 			</header>
 		</div>
@@ -75,10 +71,15 @@
 				<div class="row gx-4 gx-lg-5 align-items-center">
 					<div class="col-md-6">
 						<img
-							class="card-img-top mb-5 mb-md-0"
+							class="card-img mb-5 mb-md-0"
 							th:src="'data:image/png;base64,' + ${product.getImage()}"
 							alt="..."
-							style="border-radius: 15px"
+							style="
+								border-radius: 15px;
+								width: 350px;
+								height: 350px;
+								object-fit: cover;
+							"
 						/>
 					</div>
 					<div class="col-md-6">
@@ -92,7 +93,9 @@
 							<!-- <span class="text-decoration-line-through"
 								>$45.00</span
 							> -->
-							<span th:text="${product.getPrice()}">$???.??</span>
+							<span th:text="${product.getPricePretty()}"
+								>$???.??</span
+							>
 						</div>
 						<p class="lead" th:text="${product.description}">
 							Ops... houve um erro ao carregar a descrição do
@@ -107,8 +110,9 @@
 								style="max-width: 3rem"
 							/>
 							<a
-								href="https://wa.me/5511955701502?text=Olá%20eu%20quero%20uma%20Geleia%20Amora%20Preta!"
+								th:href="${whatsappLink}"
 								target="_blank"
+								id="whatsappLink"
 							>
 								<button
 									class="btn btn-outline-dark flex-shrink-0"
@@ -131,10 +135,10 @@
 					<div class="footer-col">
 						<h4>Empresa</h4>
 						<ul>
+							<li><a href="/">Home</a></li>
 							<li><a href="/sobre-nos">Sobre Nós</a></li>
-							<li><a href="#">our services</a></li>
-							<li><a href="#">privacy policy</a></li>
-							<li><a href="#">affiliate program</a></li>
+							<li><a href="/produtos">Geleias</a></li>
+							
 						</ul>
 					</div>
 
@@ -162,9 +166,6 @@
 					<div class="footer-col">
 						<h4>Nossas Redes Sociais</h4>
 						<div class="social-links">
-							<a th:href="${facebook.description}" target="_blank"
-								><i class="fab fa-facebook-f"></i
-							></a>
 							<a
 								th:href="${instagram.description}"
 								target="_blank"
@@ -194,11 +195,19 @@
 						document.querySelector("#inputQuantity").value;
 					var whatsappLink = document.querySelector("#whatsappLink");
 
+					console.log(quantity);
+
 					// Texto da mensagem com a quantidade escolhida
-					var message = `Olá%20eu%20quero%20${quantity}%20unidades%20de%20Geleia%20Amora%20Preta.`;
+					var message = whatsappLink.href
+						.replace("uma", quantity + " unidades de")
+						.replace(
+							/(.\d||uma)%20unidade(?:s)?%20de/gm,
+							quantity + " unidades de"
+						);
 
 					// Atualizar o href com a quantidade
-					whatsappLink.href = `https://wa.me/5511955701502?text=${message}`;
+					console.log(message);
+					whatsappLink.href = message;
 				});
 		</script>
 		<script src="/scripts/navbar.js"></script>

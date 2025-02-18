@@ -12,5 +12,5 @@ import br.edu.ibmec.projeto_verduras_legumes.models.User;
 public interface UserRepository extends JpaRepository<User, UUID> {
 	Optional<User> findByName(String name);
 
-	Optional<User> findByEmail(String email);
+	User findByEmail(String email);
 }

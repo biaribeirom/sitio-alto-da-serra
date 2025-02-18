@@ -30,7 +30,7 @@
   <body>
 
 
-    <div class="bannernav" th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'">
+    <div class="bannernav" th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'">
         <header>
             <div class="navbar">
                 <div class="logo"><a class="a" href='/home'>Sítio Alto da Serra</a></div>
@@ -38,7 +38,7 @@
                     <li class="li"><a class="a" href='/home'>Home</a></li>
                     <li class="li"><a class="a" href="/sobre-nos">Sobre Nós</a></li>
                     <li class="li"><a class="a" href="/produtos">Geleias</a></li>
-                    <li class="li"><a class="a" href="/admin">Admin</a></li>
+                    
                 </ul>
 
                 <div class="toggle_btn">
@@ -51,7 +51,7 @@
                 <li class="li"><a class="a" href="/home">Home</a></li>
                     <li class="li"><a class="a" href="/sobre-nos">Sobre Nós</a></li>
                     <li class="li"><a class="a" href="/produtos">Geleias</a></li>
-                    <li class="li"><a class="a" href="/admin">Admin</a></li>
+                    
 
             </div>
         </header>
@@ -119,10 +119,10 @@
                 <div class="footer-col">
                     <h4>Empresa</h4>
                     <ul>
-                        <li><a href="/sobre-nos">Sobre Nós</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
+								<li><a href="/">Home</a></li>
+								<li><a href="/sobre-nos">Sobre Nós</a></li>
+								<li><a href="/produtos">Geleias</a></li>
+								
                     </ul>
                 </div>
 
@@ -138,7 +138,6 @@
                 <div class="footer-col">
                     <h4>Nossas Redes Sociais</h4>
                     <div class="social-links">
-                        <a th:href="${facebook.description}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a th:href="${instagram.description}" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a th:href="${whatsapp.description}" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>

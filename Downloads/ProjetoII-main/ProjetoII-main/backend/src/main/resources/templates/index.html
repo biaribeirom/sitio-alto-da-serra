@@ -26,7 +26,7 @@
 
     <div
 			class="bannernav"
-			th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+			th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 		>
 			<header>
 				<div class="navbar">
@@ -43,9 +43,7 @@
 						<li class="li">
 							<a class="a" href="/produtos">Geleias</a>
 						</li>
-						<li class="li">
-							<a class="a" href="/admin">Admin</a>
-						</li>
+						
 					</ul>
 
 					<div class="toggle_btn">
@@ -63,9 +61,7 @@
 					<li class="li">
 						<a class="a" href="/produtos">Geleias</a>
 					</li>
-					<li class="li">
-						<a class="a" href="/admin">Admin</a>
-					</li>
+					
 				</div>
 			</header>
 		</div>
@@ -83,29 +79,9 @@
                     <div class="container swiper">
                         <div class="card-wrapper">
                             <ul class="card-list swiper-wrapper" >
-
-                                <!-- SUBSTITUIR COM TH:EACH -->
-
                                 <tr th:each="product : ${products}">
-                                    <!-- <a class="card-produto" th:href="${product.getURL()}">
-                                        <div class="col-md-6 col-lg-3 ftco-animate">
-                                            <div class="product">
-                                                <a th:href="${product.getURL()}" class="img-prod"><img class="img-fluid"  th:src="'data:image/png;base64,' + ${product.getImage()}" alt="Colorlib Template">
-                                                    <span class="status" th:if="${product.isSoldOut()}">Esgotado</span>
-                                                    <div class="overlay"></div>
-                                                </a>
-                                                <div class="text py-3 pb-4 px-3 text-center card-info">
-                                                    <h3><a th:href="${product.getURL()}" th:text="${product.getName()}">Ops... houve um erro ao carregar o produto.</a></h3>
-                                                    <button class= "card-button" th:attr="onclick='window.location.href=\'' + ${product.getURL()} + '\''">
-                                                        Ver Produto
-                                                    </button>
-
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </a> -->
-                                    <li class="card-item swiper-slide" style="">
-                                        <a href="#" class="card-link">
+                                    <li class="card-item swiper-slide">
+                                        <a th:href="${product.getURL()}" class="card-link">
                                             <img th:src="'data:image/png;base64,' + ${product.getImage()}" alt="Card Image" class="card-image" />
                                             <h2 class="card-title" th:href="${product.getURL()}" th:text="${product.getName()}">
                                                 Ops... houve um erro ao carregar o produto.
@@ -136,11 +112,13 @@
             <div class="about-content">
                 <h1>Sobre Sítio Alto da Serra</h1>
                 <p th:text="${about.getDescription()}">Ops... houve um erro ao carregar o texto.</p>
-                <button class="btn-sobre-nos">Veja Mais</button>
+                <a href="/sobre-nos">
+                    <button class="btn-sobre-nos">Veja Mais</button>
+                </a>
             </div>
 
             <div class="about-image">
-                <img th:src="'data:image/png;base64,' + ${about.getBase64Image()}" alt="">
+                <img th:src="'data:image/png;base64,' + ${about.getImage()}" alt="">
             </div>
         </div>
     </section>
@@ -162,7 +140,7 @@
 
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_1.getImage()}" alt="Card Image" class="card-image-processos" />
                                         <div class="processos-text">
                                             <p class="card-text" th:text="${dummy_product_1.getDescription()}">
                                                 Ops... houve um erro ao carregar o texto.
@@ -175,7 +153,7 @@
 
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img th:src="'data:image/png;base64,' + ${dummy_product_2.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_2.getImage()}" alt="Card Image" class="card-image-processos" />
                                         <div class="processos-text">
                                             <p class="card-text" th:text="${dummy_product_2.getDescription()}">
                                                 Ops... houve um erro ao carregar o texto.
@@ -187,7 +165,7 @@
 
                                 <li class="card-item swiper-slide">
                                     <a href="#" class="card-link">
-                                        <img th:src="'data:image/png;base64,' + ${dummy_product_3.getBase64Image()}" alt="Card Image" class="card-image-processos" />
+                                        <img th:src="'data:image/png;base64,' + ${dummy_product_3.getImage()}" alt="Card Image" class="card-image-processos" />
                                         <div class="processos-text">
                                             <p class="card-text" th:text="${dummy_product_3.getDescription()}">
                                                 Ops... houve um erro ao carregar o texto.
@@ -226,7 +204,7 @@
                     Ops... houve um erro ao carregar o texto.
                 </p>
                 <hr />
-                <img th:src="'data:image/png;base64,' + ${testimonial_1.getBase64Image()}" />
+                <img th:src="'data:image/png;base64,' + ${testimonial_1.getImage()}" />
                 <p class="name" th:text="${testimonial_1.testimonialPart2()}">
                     Ops... houve um erro ao carregar o texto.
                 </p>
@@ -237,7 +215,7 @@
                     Ops... houve um erro ao carregar o texto.
                 </p>
                 <hr />
-                <img th:src="'data:image/png;base64,' + ${testimonial_2.getBase64Image()}" />
+                <img th:src="'data:image/png;base64,' + ${testimonial_2.getImage()}" />
                 <p class="name" th:text="${testimonial_2.testimonialPart2()}">
                     Ops... houve um erro ao carregar o texto.
                 </p>
@@ -248,7 +226,7 @@
                     Ops... houve um erro ao carregar o texto.
                 </p>
                 <hr />
-                <img th:src="'data:image/png;base64,' + ${testimonial_3.getBase64Image()}" />
+                <img th:src="'data:image/png;base64,' + ${testimonial_3.getImage()}" />
                 <p class="name" th:text="${testimonial_3.testimonialPart2()}">
                     Ops... houve um erro ao carregar o texto.
                 </p>
@@ -284,10 +262,9 @@
                 <div class="footer-col">
                     <h4>Empresa</h4>
                     <ul>
+                        <li><a href="/">Home</a></li>
                         <li><a href="/sobre-nos">Sobre Nós</a></li>
-                        <li><a href="#">our services</a></li>
-                        <li><a href="#">privacy policy</a></li>
-                        <li><a href="#">affiliate program</a></li>
+                        <li><a href="/produtos">Geleias</a></li>
                     </ul>
                 </div>
 
@@ -303,7 +280,6 @@
                 <div class="footer-col">
                     <h4>Nossas Redes Sociais</h4>
                     <div class="social-links">
-                        <a th:href="${facebook.description}" target="_blank"><i class="fab fa-facebook-f"></i></a>
                         <a th:href="${instagram.description}" target="_blank"><i class="fab fa-instagram"></i></a>
                         <a th:href="${whatsapp.description}" target="_blank"><i class="fab fa-whatsapp"></i></a>
                     </div>

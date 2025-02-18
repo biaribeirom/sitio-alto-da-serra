@@ -15,7 +15,7 @@
 
     <div
 		class="bannernav"
-		th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+		th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 	>
         <header>
             <div class="navbar">
@@ -60,6 +60,7 @@
                         <th>Nome do Produto</th>
                         <th>Descrição</th>
                         <th>Preço</th>
+                        <th>Estoque</th>
                         <th>Ações</th>
                     </tr>
                 </thead>
@@ -69,11 +70,12 @@
 							<td><img th:src="'data:image/png;base64,' + ${product.getImage()}" alt="Imagem nao encontrada" class="table-img"></td>
 							<td th:text="${product.getName()}">????</td>
 							<td th:text="${product.description}">Ops... Houve um erro ao carregar o produto.</td>
-							<td th:text="${product.getPrice()}">R$ ???,??</td>
+							<td th:text="${product.getPricePretty()}">R$ ???,??</td>
+                            <td th:text="${product.getStock()}">???</td>
 							<td>
-								<button class="btn-edit" data-bs-toggle="modal" th:attr="data-bs-target='#editProductModal' + ${product.getId()}">Editar</button>
+								<button class="btn-edit" data-bs-toggle="modal" th:attr="data-bs-target='#editProductModal' + ${product.getID()}">Editar</button>
 								<!-- <button class="btn-outofstock">Fora de Estoque</button> -->
-								<button class="btn-delete" data-bs-toggle="modal" th:attr="data-bs-target='#deleteProductModal' + ${product.getId()}">Remover</button>
+								<button class="btn-delete" data-bs-toggle="modal" th:attr="data-bs-target='#deleteProductModal' + ${product.getID()}">Remover</button>
 							</td>
 						</tr>
 					</a>
@@ -91,9 +93,9 @@
         <div class="modal-dialog">
             <div class="modal-content">
                 <form
-                    id="addProductForm"
                     th:action="@{/produtos/upload}"
                     th:object="${product}"
+                    enctype="multipart/form-data"
                     method="post"
                 >
                     <div class="modal-header">
@@ -107,21 +109,20 @@
                         </div>
                         <div class="mb-3">
                             <label for="productDescription" class="form-label">Descrição</label>
-                            <textarea class="form-control" id="productDescription" required th:field="*{description}"></textarea>
+                            <textarea class="form-control" id="productDescription" required th:field="*{description}" style="height: 180px;"></textarea>
                         </div>
                         <div class="mb-3">
                             <label for="productStock" class="form-label">Estoque</label>
                             <input type="number" class="form-control" id="productStock" th:field="*{stock}" required>
                         </div>
 						<div class="mb-3">
-                            <!-- problema aqui, double nao consgue virar string -->
-                             <!-- todo -->
                             <label for="productPrice" class="form-label">Preço</label>
-                            <input type="number" class="form-control" id="productPrice"  required>
+                            <input type="number" class="form-control" id="productPrice" required th:field="*{price}">
                         </div>
                         <div class="mb-3">
                             <label for="productImage" class="form-label">Imagem do Produto</label>
-                            <input type="file" class="form-control" id="productImage"  required>
+                            <input type="file" name="image" class="form-control" id="productImage" accept="image/*" required>
+
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -136,13 +137,14 @@
     <!-- Modal Editar Produto -->
 	<!-- todo th:each generate one modal per item -->
 	 <!-- make modals functional/make the endpoints you lazy fuck -->
-	 <a th:each="product : ${products}">
-	 <div th:id="'editProductModal'+${product.getId()}" class="modal fade">
+	<a th:each="product : ${products}">
+	    <div th:id="'editProductModal'+${product.getID()}" class="modal fade">
         <div class="modal-dialog">
             <div class="modal-content">
                 <form
-                    th:action="@{/produtos/update}"
+                    th:action="@{/produtos/update/{id}(id=${product.getID()})}"
                     th:object="${product}"
+                    enctype="multipart/form-data"
                     method="post"
                 >
                     <div class="modal-header">
@@ -152,24 +154,23 @@
                     <div class="modal-body">
                         <div class="form-group">
                             <label>Nome do Produto</label>
-                            <input type="text" class="form-control" required th:value="${product.getName()}" th:field="*{name}">
+                            <input type="text" class="form-control" th:field="*{name}" th:placeholder="${product.getName()}" />
                         </div>
                         <div class="form-group">
                             <label>Descrição</label>
-                            <!-- nao sei como carrega texto pra dentro de textarea, necessito de wifi -->
-                             <!-- tentei th:value="${product.getDescription()}" -->
-                            <textarea class="form-control" required th:field="*{description}"></textarea>
+                            <textarea class="form-control" th:field="*{description}" th:placeholder="${product.getDescription()}" style="height: 180px;"></textarea>
                         </div>
                         <div class="form-group">
                             <label>Preço</label>
-                            <input type="number" class="form-control" required th:value="${product.getPricePlain()}">
+                            <input type="number" class="form-control" th:field="*{price}" th:placeholder="${product.getPrice()}">
                         </div>
                         <div class="form-group">
-                            <!-- fudeu, nao sei como retroativamente insere a imagem de volta aq. -->
-                             <!-- testei th:value="'data:image/png;base64,' + ${product.getImage()}" -->
-                             <!-- preciso de wifi aq tambem -->
+                            <label>Estoque</label>
+                            <input type="number" class="form-control" th:field="*{stock}" th:placeholder="${product.getStock()}">
+                        </div>
+                        <div class="form-group">
                             <label>Imagem do Produto</label>
-                            <input type="file" class="form-control" >
+                            <input type="file" class="form-control" name="image" accept="image/*">
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -179,12 +180,12 @@
                 </form>
             </div>
         </div>
-    </div>
+        </div>
 	</a>
 
     <!-- Modal Remover Produto -->
     <a th:each="product : ${products}">
-    	<div th:id="'deleteProductModal'+${product.getId()}" class="modal fade">
+    	<div th:id="'deleteProductModal'+${product.getID()}" class="modal fade">
 	        <div class="modal-dialog">
 	            <div class="modal-content">
 	                <form
@@ -215,10 +216,10 @@
 				<div class="footer-col">
 					<h4>Empresa</h4>
 					<ul>
-						<li><a href="/sobre-nos">Sobre Nós</a></li>
-						<li><a href="#">our services</a></li>
-						<li><a href="#">privacy policy</a></li>
-						<li><a href="#">affiliate program</a></li>
+						<li><a href="/">Home</a></li>
+                        <li><a href="/sobre-nos">Sobre Nós</a></li>
+                        <li><a href="/produtos">Geleias</a></li>
+                        <li><a href="/admin">Admin</a></li>
 					</ul>
 				</div>
 
@@ -294,21 +295,5 @@
         });
 
      </script>
-     <script>
-        document.getElementById("addProductForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Impede o recarregamento da página
-
-    // Captura os dados inseridos no formulário
-    const productName = document.getElementById("productName").value;
-    const productDescription = document.getElementById("productDescription").value;
-    const productPrice = document.getElementById("productPrice").value;
-    const productImage = document.getElementById("productImage").files[0]; // Pega o arquivo da imagem
-
-    // Aqui, você pode adicionar o código para salvar esses dados na tabela ou banco de dados
-
-    // Fechar o modal após adicionar o produto
-    const addProductModal = bootstrap.Modal.getInstance(document.getElementById('addProductModal'));
-    addProductModal.hide();
-});</script>
   </body>
 </html>

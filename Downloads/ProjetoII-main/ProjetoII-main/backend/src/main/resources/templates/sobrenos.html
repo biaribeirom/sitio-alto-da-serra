@@ -26,7 +26,7 @@
 
 		<div
 			class="bannernav"
-			th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+			th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 		>
 			<header>
 				<div class="navbar">
@@ -43,9 +43,7 @@
 						<li class="li">
 							<a class="a" href="/produtos">Geleias</a>
 						</li>
-						<li class="li">
-							<a class="a" href="/admin">Admin</a>
-						</li>
+						
 					</ul>
 
 					<div class="toggle_btn">
@@ -63,9 +61,7 @@
 					<li class="li">
 						<a class="a" href="/produtos">Geleias</a>
 					</li>
-					<li class="li">
-						<a class="a" href="/admin">Admin</a>
-					</li>
+					
 				</div>
 			</header>
 		</div>
@@ -79,7 +75,7 @@
 						<div class="ms-md-2 ms-lg-5">
 							<img
 								class="img-fluid rounded-3"
-								th:src="'data:image/png;base64,' + ${about_us.getBase64Image()}"
+								th:src="'data:image/png;base64,' + ${about_us.getImage()}"
 							/>
 						</div>
 					</div>
@@ -94,7 +90,6 @@
 				</div>
 			</div>
 		</section>
-		<br /><br /><br />
 		<section class="py-5">
 			<div class="container">
 				<div
@@ -116,13 +111,13 @@
 							<div class="col-6">
 								<img
 									class="img-fluid rounded-3"
-									th:src="'data:image/png;base64,' + ${who_are_we_image_1.getBase64Image()}"
+									th:src="'data:image/png;base64,' + ${who_are_we_image_1.getImage()}"
 								/>
 							</div>
 							<div class="col-6">
 								<img
 									class="img-fluid rounded-3"
-									th:src="'data:image/png;base64,' + ${who_are_we_image_2.getBase64Image()}"
+									th:src="'data:image/png;base64,' + ${who_are_we_image_2.getImage()}"
 								/>
 							</div>
 						</div>
@@ -130,16 +125,16 @@
 				</div>
 			</div>
 		</section>
-		<br /><br /><br />
+    <br>
 		<section class="py-5">
 			<div class="container">
 				<div class="row justify-content-center text-center mb-3">
 					<div class="col-lg-8 col-xl-7">
 						<h2 class="display-5 fw-bold">Nossos Objetivos</h2>
-						<p class="lead" th:text="${objective_text.description}">
+						<!-- <p class="lead" th:text="${objective_text.description}">
 							Ops... houve um erro ao carregar o texto.
 						</p>
-					</div>
+					</div> -->
 				</div>
 				<br /><br />
 				<div class="row g-4 g-md-5">
@@ -147,7 +142,7 @@
 						<div class="d-flex">
 							<div class="text-primary me-4">
 								<img
-									th:src="'data:image/png;base64,' + ${objective_1.getBase64Image()}"
+									th:src="'data:image/png;base64,' + ${objective_1.getImage()}"
 									alt="Descrição do Ícone"
 									width="32"
 									height="32"
@@ -167,7 +162,7 @@
 						<div class="d-flex">
 							<div class="text-primary me-4">
 								<img
-									th:src="'data:image/png;base64,' + ${objective_2.getBase64Image()}"
+									th:src="'data:image/png;base64,' + ${objective_2.getImage()}"
 									alt="Descrição do Ícone"
 									width="32"
 									height="32"
@@ -187,7 +182,7 @@
 						<div class="d-flex">
 							<div class="text-primary me-4">
 								<img
-									th:src="'data:image/png;base64,' + ${objective_3.getBase64Image()}"
+									th:src="'data:image/png;base64,' + ${objective_3.getImage()}"
 									alt="Descrição do Ícone"
 									width="32"
 									height="32"
@@ -207,7 +202,7 @@
 						<div class="d-flex">
 							<div class="text-primary me-4">
 								<img
-									th:src="'data:image/png;base64,' + ${objective_4.getBase64Image()}"
+									th:src="'data:image/png;base64,' + ${objective_4.getImage()}"
 									alt="Descrição do Ícone"
 									width="32"
 									height="32"
@@ -226,6 +221,26 @@
 				</div>
 			</div>
 		</section>
+    <br>
+    <!-- Seção Conheça Nosso Site -->
+    <section class="secao-conhecanossosite">
+        <div class="container-conhecanossosite">
+            <div class="linha-conhecanossosite align-items-center">
+                <div class="coluna-imagem-conhecanossosite">
+                    <div class="imagem-wrapper-conhecanossosite">
+                        <img class="imagem-conhecanossosite" th:src="'data:image/png;base64,' + ${other_site.getImage()}" alt="Imagem do outro site">
+                    </div>
+                </div>
+                <div class="coluna-texto-conhecanossosite">
+                    <div class="texto-wrapper-conhecanossosite">
+                        <h2 class="titulo-conhecanossosite">Conheça nosso outro Site</h2>
+                        <p class="descricao-conhecanossosite" th:text="${other_site.description}"></p>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 
 		<!-- FOOTER -->
 		<footer class="footer">
@@ -234,12 +249,10 @@
 					<div class="footer-col">
 						<h4>Empresa</h4>
 						<ul>
-							<li>
-								<a href="/sobre-nos">Sobre Nós</a>
-							</li>
-							<li><a href="#">our services</a></li>
-							<li><a href="#">privacy policy</a></li>
-							<li><a href="#">affiliate program</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/sobre-nos">Sobre Nós</a></li>
+							<li><a href="/produtos">Geleias</a></li>
+							
 						</ul>
 					</div>
 
@@ -267,9 +280,6 @@
 					<div class="footer-col">
 						<h4>Nossas Redes Sociais</h4>
 						<div class="social-links">
-							<a th:href="${facebook.description}" target="_blank"
-								><i class="fab fa-facebook-f"></i
-							></a>
 							<a
 								th:href="${instagram.description}"
 								target="_blank"

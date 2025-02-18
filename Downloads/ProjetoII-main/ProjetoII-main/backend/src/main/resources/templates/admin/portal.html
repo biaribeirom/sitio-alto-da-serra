@@ -26,7 +26,7 @@
 
 		<div
 			class="bannernav"
-			th:style="'background-image: url(data:image/png;base64,' + ${banner.getBase64Image()} + ')'"
+			th:style="'background-image: url(data:image/png;base64,' + ${banner.getImage()} + ')'"
 		>
 			<header>
 				<div class="navbar">
@@ -95,7 +95,12 @@
 					</button>
 				</div>
 				<div class="col-sm-4">
-					<button class="btn btn-add-product">Estatística</button>
+					<button
+						class="btn btn-add-product"
+						onclick='window.location.href="/admin/recursos"'
+					>
+						Recursos
+					</button>
 				</div>
 			</div>
 		</div>
@@ -107,10 +112,10 @@
 					<div class="footer-col">
 						<h4>Empresa</h4>
 						<ul>
-							<li><a href="/sobre-nos">Sobre Nós</a></li>
-							<li><a href="#">our services</a></li>
-							<li><a href="#">privacy policy</a></li>
-							<li><a href="#">affiliate program</a></li>
+							<li><a href="/">Home</a></li>
+							<li><a href="/zsobre-nos">Sobre Nós</a></li>
+							<li><a href="/produtos">Geleias</a></li>
+							<li><a href="/admin">Admin</a></li>
 						</ul>
 					</div>
 
