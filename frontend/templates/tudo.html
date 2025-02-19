@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SitioAltodaSerra</title>
+
+     <!-- conectando cdn font awesoma -->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    <!-- Linking Swiper JS -->
+    <link
+    rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+    <!-- Linking Google Fonts Icon -->
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@24,400,0,0&icon_names=arrow_forward" />
+    <!-- Linking Arquivo CSS -->
+    <link rel="stylesheet" href="/frontend/static/style/tudo.css">
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+
+    <div class="bannernav">
+        <header>
+            <div class="navbar">
+                <div class="logo"><a class="a" href='/sitio-alto-da-serra/home'>Sítio Alto da Serra</a></div>
+                <ul class="links">
+                    <li class="li"><a class="a" href='/sitio-alto-da-serra/home'>Home</a></li>
+                    <li class="li"><a class="a" href="/sitio-alto-da-serra/sobre-nos">Sobre Nós</a></li>
+                    <li class="li"><a class="a" href="/sitio-alto-da-serra/produtos">Geleias</a></li>
+                    <li class="li"><a class="a" href="#" id="contato-btn">Contato</a></li>
+                </ul>
+                
+                <div class="toggle_btn">
+                    <i class="fa-solid fa-bars"></i>
+                </div>
+            </div>
+    
+    
+            <div class="dropdown_menu">
+                <li class="li"><a class="a" href="/sitio-alto-da-serra/home">Home</a></li>
+                    <li class="li"><a class="a" href="/sitio-alto-da-serra/sobre-nos">Sobre Nós</a></li>
+                    <li class="li"><a class="a" href="/sitio-alto-da-serra/produtos">Geleias</a></li>
+                    <li class="li"><a class="a" href="#" id="contato-btn-dropdown">Contato</a></li>
+                    
+            </div>
+        </header>
+    </div>
+
+    <!-- Catálogo -->
+    
+    <section>
+        <div class="nossas-geleias">
+            <div class="container">
+                <div class="section-title">
+                    <h1 class="h1-carrosel">Produtos Oferecidos</h1>
+                    <p class="p-carrosel">Explore nossas Geleias Artesanais feitas com Ingredientes Selecionados</p>
+                </div>
+                <div class="div-carrousel">
+                    <div class="container swiper">
+                        <div class="card-wrapper">
+                            <ul class="card-list swiper-wrapper">
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/Geleia Cambuci com Manga.png" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia Cambuci e Manga 100% Sem Açúcar
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
+                
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="/sitio-alto-da-serra/geleia-amora-preta" class="card-link">
+                                        <img src="/frontend/static/images/Geleia Amora Preta.png" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia Amora Preta
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/Geleia Jabuticaba 2.png" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia de Jabuticaba
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/Geleia Morango.png" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia de Morango
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/Geleia Uvaia e Manga.png" alt="Card Image" class="card-image" />
+                                        <h2 class="card-title">
+                                            Geleia de Uva e Manga
+                                        </h2>
+                                        <button class="card-button">
+                                            Ver Produto
+                                        </button>
+                                    </a>
+                                </li>
+                          
+                            </ul>
+                            
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-slide-button swiper-button-prev"></div>
+                            <div class="swiper-slide-button swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Seção Informativa Sobre Nós -->
+
+    <section class="sobre-nos">
+        <div class="container-sobre-nos">
+            <div class="about-content">
+                <h1>Sobre Sítio Alto da Serra</h1>
+                <p>O Sítio Alto da Serra é a única fazenda de agricultura familiar, que produz produtos orgânicos, para pessoas que se preocupam com a saúde e o meio ambiente, na região de São Paulo, que buscam um alimento saudável tanto na sua produção quanto nas relações com pessoas e o mundo, num momento em que o planeta e a humanidade estão precisando cada vez mais de ações ecológicas e sociais.</p>
+                <button class="btn-sobre-nos">Veja Mais</button>
+            </div>
+
+            <div class="about-image">
+                <img src="/frontend/static/images/fndosobresitio.png" alt="">
+            </div>
+        </div>
+    </section>
+
+    <!-- PROCESSOS -->
+
+    <section>
+        <div class="nossas-geleias">
+            <div class="container">
+                <div class="section-title">
+                    <h1 class="h1-carrosel">Do Pomar à Mesa</h1>
+                    <p class="p-carrosel">Conheça o Processo Artesanal da Geleia Sítio Alto da Serra</p>
+                </div>
+                <div class="div-carrousel">
+                    <div class="container swiper">
+                        <div class="card-wrapper">
+                            <ul class="card-list swiper-wrapper">
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/producao1.jfif" alt="Card Image" class="card-image-processos" />
+                                        <div class="processos-text">
+                                            <p class="card-text">
+                                                Aplicando rigorosos critérios de controle de qualidade, as frutas são selecionadas nas melhores áreas de cultivo do mundo.
+                                            </p>
+                                        </div>
+                                        
+                                    </a>
+                                </li>
+                
+                
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/producao2.jfif" alt="Card Image" class="card-image-processos" />
+                                        <div class="processos-text">
+                                            <p class="card-text">
+                                                Nós produzimos em pequenos lotes, com lento cozimento para preservar as características dos ingredientes
+                                            </p>
+                                        </div>
+                                        
+                                    </a>
+                                </li>
+
+                                <li class="card-item swiper-slide">
+                                    <a href="#" class="card-link">
+                                        <img src="/frontend/static/images/fotomorangoproducao.jfif" alt="Card Image" class="card-image-processos" />
+                                        <div class="processos-text">
+                                            <p class="card-text">
+                                                As frutas são colhidas assim que atingem seu ponto ideal de maturação, gerando um mix de produtos únicos, reconhecidos e admirados por seu sabor, aroma e textura.</p>
+                                        </div>
+                                        
+                                    </a>
+                                </li>
+
+                          
+                            </ul>
+                            
+                            <div class="swiper-pagination"></div>
+                            <div class="swiper-slide-button swiper-button-prev"></div>
+                            <div class="swiper-slide-button swiper-button-next"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- TESTIMONIALS -->
+
+    <section class="section-testimonial">
+        <div class="section__container">
+            <div class="header">
+              <h1>Depoimentos</h1>
+              <p>Veja o que nossos clientes estão dizendo!</p>
+            </div>
+            <div class="testimonials__grid">
+              <div class="card">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p>
+                    O site é super fácil de usar e tem um visual lindo! As fotos das geleias me deram vontade de experimentar todas!
+                </p>
+                <hr />
+                <img src="/frontend/static/images/pessoafalsa1.png" alt="user" />
+                <p class="name">Ana Ribeiro</p>
+              </div>
+              <div class="card">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p>
+                    Achei o site muito acolhedor, combina com a proposta artesanal das geleias. Dá vontade de comprar só de ver!
+                </p>
+                <hr />
+                <img src="/frontend/static/images/pessoafalsa2.png" alt="user" />
+                <p class="name">João Hideo</p>
+              </div>
+              <div class="card">
+                <span><i class="ri-double-quotes-l"></i></span>
+                <p>
+                    Adorei a apresentação das geleias e o cuidado em descrever cada sabor. O site transmite o carinho com que os produtos são feitos.
+                </p>
+                <hr />
+                <img src="/frontend/static/images/pessoafalsa3.png" alt="user" />
+                <p class="name">Antônio Andrade</p>
+              </div>
+            </div>
+    </section>
+
+    <!-- NEWSLETTER -->
+
+    <section class="section-testimonial">
+        <div class="section__container">
+            <div class="header">
+              <h1>Saboreie Nossas Novidades</h1>
+              <p>Mantenha-se atualizado com as últimas delícias e promoções do Sítio Alto da Serra</p>
+            </div>
+            <form class="container-newsletter">
+                <input type="email" placeholder="Email">
+                <button class="newsletter-btn">Inscreva-se</button>
+            </form>
+            
+    </section>
+ 
+    <!-- FOOTER -->
+    <footer class="footer" >
+        <div class="container-footer" style="padding: 0 15px">
+            <div class="row">
+                <div class="footer-col">
+                    <h4>Empresa</h4>
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="/sitio-alto-da-serra/sobre-nos">Sobre Nós</a></li>
+                        <li><a href="#">Geleias</a></li>
+                        <li><a href="#">Admin</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-col">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="#">Email: violetahojah@gmail.com</a></li>
+                        <li><a href="#">Phone: <br> +55 (12)99769-0384</a></li>
+                        <li><a href="#">Endereço: <br> Bairro Alto, Natividade da Serra 12.180-000 </a></li>
+                        
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Nossas Redes Sociais</h4>
+                    <div class="social-links">
+                        <a href="https://www.instagram.com/sitiodoaltodaserra/"><i class="fab fa-instagram"></i></a>
+                        <a href="https://wa.me/5511955701502?"><i class="fab fa-whatsapp"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+   </footer>
+
+    <!-- SCRIPTS -->
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="/frontend/static/scripts/script.js"></script>
+    <script src="/frontend/static/scripts/navbar.js"></script>
+    <!-- scipt tooglebutton -->
+     <script>
+        const toggleBtn = document.querySelector('.toggle_btn')
+        const toggleBtnIcon = document.querySelector('.toggle_btn i')
+        const dropDownMenu = document.querySelector('.dropdown_menu')
+
+        toggleBtn.onclick = function() {
+            dropDownMenu.classList.toggle('open')
+            const isOpen = dropDownMenu.classList.contains('open')
+
+            toggleBtnIcon.classList = isOpen
+            ? "fa-solid fa-xmark"
+            : "fa-solid fa-bars"
+        }
+     </script>
+     <script>
+        // script.js
+        document.getElementById('contato-btn').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+        });
+
+        document.getElementById('contato-btn-dropdown').addEventListener('click', function(event) {
+            event.preventDefault(); // Evita o comportamento padrão do link
+            document.getElementById('footer').scrollIntoView({ behavior: 'smooth' });
+        });
+
+     </script>
+</body>
+
+</html>

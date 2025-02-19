@@ -1,0 +1,41 @@
+services:
+    projeto:
+        build: backend
+        volumes:
+            - type: bind
+              source: ./backend/data
+              target: /app/data
+        container_name: projeto_ibmec
+        image: projeto_ibmec
+        networks:
+            projeto_ibmec_net:
+                aliases:
+                    - projeto_ibmec
+            default:
+                aliases:
+                    - projeto_ibmec
+        restart: unless-stopped
+        healthcheck:
+            test: ["CMD", "curl", "-f", "http://localhost:8000"]
+            interval: 30s
+            timeout: 10s
+            retries: 5
+    # uptime kuma for monitoring
+    uptime:
+        image: louislam/uptime-kuma
+        container_name: projeto_ibmec_uptime
+        networks:
+            projeto_ibmec_net:
+                aliases:
+                    - projeto_ibmec_uptime
+            default:
+                aliases:
+                    - projeto_ibmec_uptime
+        restart: unless-stopped
+        volumes:
+            - /var/run/docker.sock:/var/run/docker.sock
+            - ./uptime-kuma-data:/app/data
+
+networks:
+    projeto_ibmec_net:
+        name: projeto_ibmec_net
